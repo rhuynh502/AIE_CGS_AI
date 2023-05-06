@@ -38,7 +38,8 @@ public class Network : MonoBehaviour
         {
             neurons.Add(new Neuron());
             // Set to layer 1 because there are only 2 layers in the network
-            // so far. This will change as more are added
+            // so far. This will change as more are added as outputs need to
+            // be at the end
             neurons[i + inputs].layer = 1;
         }
 
