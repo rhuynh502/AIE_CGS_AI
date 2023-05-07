@@ -17,7 +17,7 @@ public class Network : MonoBehaviour
     int currNeuron = 0;
     int biasNeuronLocation;
 
-    private Network(int _inputs, int _outputs)
+    public Network(int _inputs, int _outputs)
     {
         // Generate a network with these amounts of inputs and outputs
         inputs = _inputs;
@@ -76,5 +76,25 @@ public class Network : MonoBehaviour
     private void Mutate()
     {
 
+    }
+
+    public List<float> TakeInInputs(List<float> inputs)
+    {
+        // set inputs for first feedforward by taking values
+        // passed through the function and puttin the values into input nodes
+        // ie nodes in layer 0
+        // all bias nodes should be set to 1
+
+        // every neuron in the network will be sending their inputs to
+        // the connected neurons.
+
+        // fill this list with the node outputs. the output nodes have set values
+        // given by their number. check class for details
+        List<float> outputs = new List<float>();
+
+        // after calculation, reset all nodes for next time network needs
+        // to feedforward new inputs.
+
+        return outputs;
     }
 }
