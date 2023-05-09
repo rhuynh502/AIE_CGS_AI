@@ -839,8 +839,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8bdecb2380c0045a882e91cc77bf20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputAmount: 11
-  outputAmount: 3
+  inputAmount: 8
+  outputAmount: 2
   hiddenLayerAmount: 6
   movementCommands: 0000
 --- !u!136 &1295416897

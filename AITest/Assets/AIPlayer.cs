@@ -76,7 +76,6 @@ public class AIPlayer : MonoBehaviour
         float largestDist = 0;
         float closestDist = 9999;
         int largestDistPos = 0;
-        int closestDistPos = 0;
 
         float viewAngle = 45f;
         float rayAngleDif = (viewAngle * 2) / inputAmount;
@@ -98,7 +97,6 @@ public class AIPlayer : MonoBehaviour
                     if (hitInfo.distance < closestDist)
                     {
                         closestDist = hitInfo.distance;
-                        closestDistPos = i;
                     }
                     continue;
                 }
@@ -113,11 +111,9 @@ public class AIPlayer : MonoBehaviour
         }
 
         targets.Add(largestDist / 10);
-        targets.Add(closestDist / 50);
 
         float forwardRadians = Mathf.Atan2(transform.forward.z, transform.forward.x);
-
-        float targetRadians = forwardRadians - 0.37f * (closestDistPos - (inputAmount / 2) + (largestDistPos - (inputAmount / 2)));
+        float targetRadians = forwardRadians - 0.37f * (largestDistPos - (inputAmount / 2));
 
         targets.Add(Vector3.Dot(transform.forward, new Vector3(Mathf.Cos(targetRadians), 0, Mathf.Sin(targetRadians))));
 
@@ -131,10 +127,10 @@ public class AIPlayer : MonoBehaviour
     {
         AssessSituation();
 
-        transform.position += transform.TransformDirection(transform.forward) * Time.deltaTime * 2 * (outputVariables[0] * outputVariables[1]);
+        transform.position += transform.TransformDirection(transform.forward) * Time.deltaTime * 2 * (outputVariables[0]);
 
         float forwardRadians = Mathf.Atan2(transform.forward.z, transform.forward.x);
-        float targetRadians = forwardRadians - 0.37f * outputVariables[2] * Time.deltaTime;
+        float targetRadians = forwardRadians - 0.37f * outputVariables[1] * Time.deltaTime;
 
         transform.rotation = Quaternion.LookRotation(new Vector3(Mathf.Cos(targetRadians), 0, Mathf.Sin(targetRadians)));
         transform.forward = new Vector3(Mathf.Cos(targetRadians), 0, Mathf.Sin(targetRadians));
