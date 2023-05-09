@@ -19,12 +19,15 @@ public class AIPlayer : MonoBehaviour
     // Output amount is the amount of outputs the ai gives out
     // and makes an action depending on these outputs
     [SerializeField] private int outputAmount;
+    [SerializeField] private int hiddenLayerAmount;
 
 
     // These are the inputs the network takes
     List<float> dependantVariables = new List<float>();
     // These are the outputs the network calculates
     List<float> outputVariables = new List<float>();
+
+    List<float> targets = new List<float>();
 
     // These variables determine what the ai should do
     [SerializeField] private List<bool> movementCommands;
@@ -34,7 +37,7 @@ public class AIPlayer : MonoBehaviour
     bool goLeft;
     bool goRight;*/
     Vector3 targetPos;
-    Vector3 respawnPos = new Vector3( -30, 1.15f, 30 );
+    Vector3 respawnPos;
 
     // need to make a class that spawns a bunch of players
     // that class also deals with when crossbreeding occurs.
@@ -43,8 +46,9 @@ public class AIPlayer : MonoBehaviour
 
     private void Awake()
     {
-        network = new Network(inputAmount, outputAmount);
+        network = new Network(inputAmount, outputAmount, hiddenLayerAmount);
         network.OrderNetwork();
+        respawnPos = transform.position;
     }
 
     private void CalculateFitnessScore()
@@ -66,48 +70,90 @@ public class AIPlayer : MonoBehaviour
     private void AssessSituation()
     {
         dependantVariables.Clear();
+        targets.Clear();
         // This is where modularity comes in. The user should be able to
         // write up their own inputs that the ai will take in
-        for(int i = -Mathf.FloorToInt(inputAmount / 2); i <= Mathf.FloorToInt(inputAmount / 2); i++)
+        float largestDist = 0;
+        float closestDist = 9999;
+        int largestDistPos = 0;
+        int closestDistPos = 0;
+
+        float viewAngle = 45f;
+        float rayAngleDif = (viewAngle * 2) / inputAmount;
+
+        for(int i = 0; i < inputAmount; i++)
         {
-            if(Physics.Raycast(transform.position, Quaternion.Euler(0, -15 * i, 0) * transform.TransformDirection(transform.forward), out RaycastHit hitInfo))
+            float rayAngle = viewAngle - (i * rayAngleDif);
+            // Change to raycast mask to only hit walls
+            if (Physics.Raycast(transform.position, Quaternion.Euler(0, rayAngle, 0) * transform.TransformDirection(transform.forward), out RaycastHit hitInfo))
             {
                 if(hitInfo.collider.CompareTag("Wall"))
                 {
                     dependantVariables.Add(hitInfo.distance);
+                    if (hitInfo.distance > largestDist)
+                    {
+                        largestDist = hitInfo.distance;
+                        largestDistPos = i;
+                    }
+                    if (hitInfo.distance < closestDist)
+                    {
+                        closestDist = hitInfo.distance;
+                        closestDistPos = i;
+                    }
+                    continue;
                 }
-                else
-                {
-                    dependantVariables.Add(0);
-                }
+                
             }
+            dependantVariables.Add(0);
         }
 
-        outputVariables = network.FeedForward(dependantVariables);
-        for (int i = 0; i < outputAmount; i++)
+        for (int i = 0; i < inputAmount; i++)
         {
-            if (outputVariables[i] > 0.5f)
-                movementCommands[i] = true;
-            else
-                movementCommands[i] = false;
+            dependantVariables[i] /= largestDist;
         }
+
+        targets.Add(largestDist / 10);
+        targets.Add(closestDist / 50);
+
+        float forwardRadians = Mathf.Atan2(transform.forward.z, transform.forward.x);
+
+        float targetRadians = forwardRadians - 0.37f * (closestDistPos - (inputAmount / 2) + (largestDistPos - (inputAmount / 2)));
+
+        targets.Add(Vector3.Dot(transform.forward, new Vector3(Mathf.Cos(targetRadians), 0, Mathf.Sin(targetRadians))));
+
+        outputVariables = network.FeedForward(dependantVariables);
+        Debug.Log($"{outputVariables[0]} || {outputVariables[1]}");
+
     }
 
     // Actions are performed based off of the outputs given by the network
-    // These will be toggleable bools or float values that can alter
-    // specific variables as needed. eg. velocity of an object can change.
     private void PerformActions()
     {
         AssessSituation();
-        
-        if (movementCommands[0])
-            transform.position += transform.TransformDirection(transform.forward) * Time.deltaTime * 2;
+
+        transform.position += transform.TransformDirection(transform.forward) * Time.deltaTime * 2 * (outputVariables[0] * outputVariables[1]);
+
+        float forwardRadians = Mathf.Atan2(transform.forward.z, transform.forward.x);
+        float targetRadians = forwardRadians - 0.37f * outputVariables[2] * Time.deltaTime;
+
+        transform.rotation = Quaternion.LookRotation(new Vector3(Mathf.Cos(targetRadians), 0, Mathf.Sin(targetRadians)));
+        transform.forward = new Vector3(Mathf.Cos(targetRadians), 0, Mathf.Sin(targetRadians));
+        /*if (movementCommands[0])
+        {
+            float forwardRadians = Mathf.Atan2(transform.forward.z, transform.forward.x);
+            float targetRadians = forwardRadians + 0.1f * Time.deltaTime;
+
+            float temp = transform.rotation.y;
+            transform.rotation = Quaternion.LookRotation(new Vector3(Mathf.Cos(targetRadians), 0, Mathf.Sin(targetRadians)));
+        }
         if (movementCommands[1])
-            transform.position -= transform.TransformDirection(transform.forward) * Time.deltaTime;
-        if (movementCommands[2])
-            transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z + 0.5f);
-        if (movementCommands[3])
-            Quaternion.RotateTowards(transform.rotation, transform.rotation * Quaternion.Euler(0.5f, 0, 0), 180);
+        {
+            float forwardRadians = Mathf.Atan2(transform.forward.z, transform.forward.x);
+            float targetRadians = forwardRadians - 0.1f * Time.deltaTime;
+
+            float temp = transform.rotation.y;
+            transform.rotation = Quaternion.LookRotation(new Vector3(Mathf.Cos(targetRadians), 0, Mathf.Sin(targetRadians)));
+        }*/
 
     }
 
@@ -129,9 +175,11 @@ public class AIPlayer : MonoBehaviour
         {
             isAlive = false;
             CalculateFitnessScore();
-            network.Mutate();
+            timeAlive = 0;
+            network.BackPropagate(targets);
             transform.position = respawnPos;
-            transform.rotation = Quaternion.Euler(90, 0, 90);
+            transform.rotation = Quaternion.Euler(0, 45, 0);
+
             isAlive = true;
         }
     }
