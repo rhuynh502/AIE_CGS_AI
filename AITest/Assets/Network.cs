@@ -12,8 +12,7 @@ public class Network
     private int inputs;
     private int outputs;
     private int hiddenLayerAmountOfNodes;
-    private List<float> inputValues;
-    
+
     private List<Neuron> neurons = new List<Neuron>();
     private List<Connection> connections = new List<Connection>();
     int currNeuron = 0;
@@ -143,6 +142,11 @@ public class Network
         {
             neurons[inputs + i].ChangeWeights();
         }
+        
+        for(int i = 0; i < connections.Count; i++)
+        {
+            connections[i].Mutate();
+        }
     }
 
     // This function will give all required data to the neurons
@@ -177,6 +181,15 @@ public class Network
             }
         }
 
+    }
+
+    public List<Neuron> GetNeurons()
+    {
+        return neurons;
+    }
+    public List<Connection> GetConnections()
+    {
+        return connections;
     }
 
 }

@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class AIPlayer : MonoBehaviour
 {
     float fitnessScore;
-    Network network;
+    private Network network;
 
     // These variables will be used to calculate fitness
     // These will change depending on what you need the ai to accomplish
@@ -31,12 +31,8 @@ public class AIPlayer : MonoBehaviour
 
     // These variables determine what the ai should do
     [SerializeField] private List<bool> movementCommands;
-    // These bools are in their respective positions in movement commands
-    /*bool goForward;
-    bool goBackward;
-    bool goLeft;
-    bool goRight;*/
-    Vector3 targetPos;
+    private float amountOfCasts = 10;
+
     Vector3 respawnPos;
 
     // need to make a class that spawns a bunch of players
@@ -77,10 +73,11 @@ public class AIPlayer : MonoBehaviour
         float closestDist = 9999;
         int largestDistPos = 0;
 
-        float viewAngle = 45f;
-        float rayAngleDif = (viewAngle * 2) / inputAmount;
+        float viewAngle = 90f;
+        float rayAngleDif = (viewAngle * 2) / amountOfCasts;
 
-        for(int i = 0; i < inputAmount; i++)
+        // Raycasts forward
+        for(int i = 0; i <= amountOfCasts; i++)
         {
             float rayAngle = viewAngle - (i * rayAngleDif);
             // Change to raycast mask to only hit walls
@@ -105,19 +102,29 @@ public class AIPlayer : MonoBehaviour
             dependantVariables.Add(0);
         }
 
+        // Raycast backwards
+        if (Physics.Raycast(transform.position, -transform.TransformDirection(transform.forward), out RaycastHit behindHitInfo))
+        {
+            if (behindHitInfo.collider.CompareTag("Wall"))
+            {
+                dependantVariables.Add(behindHitInfo.distance);            
+            }
+        }
+        else
+            dependantVariables.Add(0);
+
         for (int i = 0; i < inputAmount; i++)
         {
             dependantVariables[i] /= largestDist;
         }
 
-        targets.Add(largestDist / 10);
-
-        float forwardRadians = Mathf.Atan2(transform.forward.z, transform.forward.x);
-        float targetRadians = forwardRadians - 0.37f * (largestDistPos - (inputAmount / 2));
-
-        targets.Add(Vector3.Dot(transform.forward, new Vector3(Mathf.Cos(targetRadians), 0, Mathf.Sin(targetRadians))));
-
+        targets.Add(1);
         outputVariables = network.FeedForward(dependantVariables);
+        if (outputVariables[1] > 0)
+            targets.Add(-0.8f);
+        else
+            targets.Add(0.8f);
+
         Debug.Log($"{outputVariables[0]} || {outputVariables[1]}");
 
     }
@@ -126,41 +133,23 @@ public class AIPlayer : MonoBehaviour
     private void PerformActions()
     {
         AssessSituation();
-
-        transform.position += transform.TransformDirection(transform.forward) * Time.deltaTime * 2 * (outputVariables[0]);
-
-        float forwardRadians = Mathf.Atan2(transform.forward.z, transform.forward.x);
-        float targetRadians = forwardRadians - 0.37f * outputVariables[1] * Time.deltaTime;
-
-        transform.rotation = Quaternion.LookRotation(new Vector3(Mathf.Cos(targetRadians), 0, Mathf.Sin(targetRadians)));
-        transform.forward = new Vector3(Mathf.Cos(targetRadians), 0, Mathf.Sin(targetRadians));
-        /*if (movementCommands[0])
-        {
-            float forwardRadians = Mathf.Atan2(transform.forward.z, transform.forward.x);
-            float targetRadians = forwardRadians + 0.1f * Time.deltaTime;
-
-            float temp = transform.rotation.y;
-            transform.rotation = Quaternion.LookRotation(new Vector3(Mathf.Cos(targetRadians), 0, Mathf.Sin(targetRadians)));
-        }
-        if (movementCommands[1])
-        {
-            float forwardRadians = Mathf.Atan2(transform.forward.z, transform.forward.x);
-            float targetRadians = forwardRadians - 0.1f * Time.deltaTime;
-
-            float temp = transform.rotation.y;
-            transform.rotation = Quaternion.LookRotation(new Vector3(Mathf.Cos(targetRadians), 0, Mathf.Sin(targetRadians)));
-        }*/
-
+        transform.position += transform.TransformDirection(transform.forward) * outputVariables[0] * Time.deltaTime;
+        transform.Rotate(0, 5 * outputVariables[1] * Time.deltaTime, 0);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        for (int i = -Mathf.FloorToInt(inputAmount / 2); i <= Mathf.FloorToInt(inputAmount / 2); i++)
+
+        float viewAngle = 90f;
+        float rayAngleDif = (viewAngle * 2) / amountOfCasts;
+        for (int i = 0; i <= amountOfCasts; i++)
         {
-            Gizmos.DrawRay(transform.position, Quaternion.Euler(0, -15 * i, 0) * transform.TransformDirection(transform.forward) * 25);
+            float rayAngle = viewAngle - (i * rayAngleDif);
+            Gizmos.DrawRay(transform.position, Quaternion.Euler(0, rayAngle, 0) * transform.TransformDirection(transform.forward) * 25);
 
         }
+        Gizmos.DrawRay(transform.position, -transform.TransformDirection(transform.forward) * 25);
     }
 
     // The functions added past this point are specifically for the racing example
@@ -178,5 +167,10 @@ public class AIPlayer : MonoBehaviour
 
             isAlive = true;
         }
+    }
+
+    public Network GetNetwork()
+    {
+        return network;
     }
 }
