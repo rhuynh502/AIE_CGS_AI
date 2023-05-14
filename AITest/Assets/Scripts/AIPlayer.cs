@@ -11,7 +11,7 @@ public class AIPlayer : MonoBehaviour
     // These variables will be used to calculate fitness
     // These will change depending on what you need the ai to accomplish
     float timeAlive;
-    bool isAlive = true;
+    public bool isAlive = true;
 
     // Input amount is the amount of inputs of data the network
     // needs to make decisions
@@ -52,13 +52,11 @@ public class AIPlayer : MonoBehaviour
         fitnessScore = timeAlive;
     }
 
-    private void Update()
+    public void Think()
     {
-        if(isAlive)
-        {
-            PerformActions();
-            timeAlive += Time.deltaTime;
-        }
+        PerformActions();
+        timeAlive += Time.deltaTime;
+        
     }
 
     // This is where the AI uses the inputs given by the user
@@ -115,7 +113,7 @@ public class AIPlayer : MonoBehaviour
 
         for (int i = 0; i < inputAmount; i++)
         {
-            dependantVariables[i] /= largestDist;
+            dependantVariables[i] = 1 - dependantVariables[i] / largestDist;
         }
 
         targets.Add(1);
