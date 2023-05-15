@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -68,7 +69,7 @@ public class Network
         {
             for(int j = 0; j < hiddenLayerAmountOfNodes; j++)
             {
-                connections.Add(new Connection(neurons[i], neurons[biasNeuronLocation + j + 1], Random.Range(-1, 1)));
+                connections.Add(new Connection(neurons[i], neurons[biasNeuronLocation + j + 1], Random.Range(-1.0f, 1.0f)));
             }
         }
 
@@ -76,14 +77,14 @@ public class Network
         {
             for(int j = 0; j < hiddenLayerAmountOfNodes; j++)
             {
-                connections.Add(new Connection(neurons[biasNeuronLocation + j + 1], neurons[inputs + i], Random.Range(-1, 1)));
+                connections.Add(new Connection(neurons[biasNeuronLocation + j + 1], neurons[inputs + i], Random.Range(-1.0f, 1.0f)));
             }
         }
 
         // Connect Bias Node
         for(int i = 0; i < hiddenLayerAmountOfNodes; i++)
         {
-            connections.Add(new Connection(neurons[biasNeuronLocation], neurons[biasNeuronLocation + i + 1], Random.Range(-1, 1)));
+            connections.Add(new Connection(neurons[biasNeuronLocation], neurons[biasNeuronLocation + i + 1], Random.Range(-1.0f, 1.0f)));
         }
 
         for(int i = 0; i < outputs; i++)
@@ -182,7 +183,11 @@ public class Network
         }
 
     }
-
+    public void Mutate()
+    {
+        for (int i = 0; i < connections.Count; i++)
+            connections[i].Mutate();
+    }
     public List<Neuron> GetNeurons()
     {
         return neurons;
@@ -190,6 +195,24 @@ public class Network
     public List<Connection> GetConnections()
     {
         return connections;
+    }
+
+    public int GetInputsAmount() { return inputs; }
+    public int GetOutputsAmount() { return outputs; }
+    public int GetHiddenLayerAmount() { return hiddenLayerAmountOfNodes; }
+
+    public Network CloneNetwork()
+    {
+        Network clone = new Network(inputs, outputs, hiddenLayerAmountOfNodes);
+
+        for(int i = 0; i < connections.Count; i++)
+        {
+            clone.connections[i].weight = connections[i].weight;
+        }
+
+        clone.OrderNetwork();
+
+        return clone;
     }
 
 }

@@ -5,13 +5,16 @@ using UnityEngine.UIElements;
 
 public class AIPlayer : MonoBehaviour
 {
-    float fitnessScore;
+    public float fitnessScore;
     private Network network;
 
+    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private float moveSpeed = 4;
     // These variables will be used to calculate fitness
     // These will change depending on what you need the ai to accomplish
     float timeAlive;
     public bool isAlive = true;
+    private float lifetime = 480;
 
     // Input amount is the amount of inputs of data the network
     // needs to make decisions
@@ -26,12 +29,14 @@ public class AIPlayer : MonoBehaviour
     List<float> dependantVariables = new List<float>();
     // These are the outputs the network calculates
     List<float> outputVariables = new List<float>();
+    public float velocityDirection;
 
     List<float> targets = new List<float>();
 
     // These variables determine what the ai should do
     [SerializeField] private List<bool> movementCommands;
     private float amountOfCasts = 10;
+    private Collider collider;
 
     Vector3 respawnPos;
 
@@ -45,17 +50,19 @@ public class AIPlayer : MonoBehaviour
         network = new Network(inputAmount, outputAmount, hiddenLayerAmount);
         network.OrderNetwork();
         respawnPos = transform.position;
+        collider = GetComponent<Collider>();
     }
 
-    private void CalculateFitnessScore()
+    public void CalculateFitnessScore()
     {
-        fitnessScore = timeAlive;
+        fitnessScore += Vector3.Distance(respawnPos, transform.position) - (Vector3.Distance(respawnPos, transform.position) / timeAlive);
     }
 
     public void Think()
     {
-        PerformActions();
+        
         timeAlive += Time.deltaTime;
+        PerformActions();
         
     }
 
@@ -68,8 +75,6 @@ public class AIPlayer : MonoBehaviour
         // This is where modularity comes in. The user should be able to
         // write up their own inputs that the ai will take in
         float largestDist = 0;
-        float closestDist = 9999;
-        int largestDistPos = 0;
 
         float viewAngle = 90f;
         float rayAngleDif = (viewAngle * 2) / amountOfCasts;
@@ -79,7 +84,7 @@ public class AIPlayer : MonoBehaviour
         {
             float rayAngle = viewAngle - (i * rayAngleDif);
             // Change to raycast mask to only hit walls
-            if (Physics.Raycast(transform.position, Quaternion.Euler(0, rayAngle, 0) * transform.TransformDirection(transform.forward), out RaycastHit hitInfo))
+            if (Physics.Raycast(transform.position, Quaternion.Euler(0, rayAngle, 0) * transform.TransformDirection(transform.forward), out RaycastHit hitInfo, Mathf.Infinity, layerMask))
             {
                 if(hitInfo.collider.CompareTag("Wall"))
                 {
@@ -87,11 +92,6 @@ public class AIPlayer : MonoBehaviour
                     if (hitInfo.distance > largestDist)
                     {
                         largestDist = hitInfo.distance;
-                        largestDistPos = i;
-                    }
-                    if (hitInfo.distance < closestDist)
-                    {
-                        closestDist = hitInfo.distance;
                     }
                     continue;
                 }
@@ -101,12 +101,14 @@ public class AIPlayer : MonoBehaviour
         }
 
         // Raycast backwards
-        if (Physics.Raycast(transform.position, -transform.TransformDirection(transform.forward), out RaycastHit behindHitInfo))
+        if (Physics.Raycast(transform.position, -transform.TransformDirection(transform.forward), out RaycastHit behindHitInfo, Mathf.Infinity, layerMask))
         {
             if (behindHitInfo.collider.CompareTag("Wall"))
             {
                 dependantVariables.Add(behindHitInfo.distance);            
             }
+            else
+                dependantVariables.Add(0);
         }
         else
             dependantVariables.Add(0);
@@ -116,27 +118,33 @@ public class AIPlayer : MonoBehaviour
             dependantVariables[i] = 1 - dependantVariables[i] / largestDist;
         }
 
-        targets.Add(1);
         outputVariables = network.FeedForward(dependantVariables);
+        targets.Add(1);
         if (outputVariables[1] > 0)
-            targets.Add(-0.8f);
+            targets.Add(-0.9f);
         else
-            targets.Add(0.8f);
+            targets.Add(0.9f);
 
-        Debug.Log($"{outputVariables[0]} || {outputVariables[1]}");
-
+        if (timeAlive > lifetime)
+            isAlive = false;
+        
     }
 
     // Actions are performed based off of the outputs given by the network
     private void PerformActions()
     {
+        Vector3 initialPos = transform.position;
         AssessSituation();
+        velocityDirection = outputVariables[0];
         transform.position += transform.TransformDirection(transform.forward) * outputVariables[0] * Time.deltaTime;
         transform.Rotate(0, 5 * outputVariables[1] * Time.deltaTime, 0);
+
     }
 
     private void OnDrawGizmos()
     {
+        if (!isAlive)
+            return;
         Gizmos.color = Color.red;
 
         float viewAngle = 90f;
@@ -157,18 +165,39 @@ public class AIPlayer : MonoBehaviour
         if(collision.collider.CompareTag("Wall"))
         {
             isAlive = false;
-            CalculateFitnessScore();
-            timeAlive = 0;
-            network.BackPropagate(targets);
-            transform.position = respawnPos;
-            transform.rotation = Quaternion.Euler(0, 45, 0);
-
-            isAlive = true;
         }
+        else
+        {
+            Physics.IgnoreCollision(collision.collider, collider);
+        }
+    }
+
+    public void Mutate()
+    {
+        //BackPropagate();
+        network.Mutate();
+    }
+
+    public void BackPropagate()
+    {
+        network.BackPropagate(targets);
     }
 
     public Network GetNetwork()
     {
         return network;
+    }
+
+    public void SetNetwork(Network _network)
+    {
+        network = _network;
+    }
+
+    public void ResetTime()
+    {
+        timeAlive = 0;
+
+        transform.position = respawnPos;
+        transform.rotation = Quaternion.Euler(0, 45, 0);
     }
 }

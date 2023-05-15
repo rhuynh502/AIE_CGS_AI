@@ -22,9 +22,9 @@ public class Connection
     {
         float chanceToMutate = Random.value;
 
-        if(chanceToMutate < 0.1)
-        {
-            weight = Random.Range(-1, 1);
-        }
+        if(chanceToMutate < 0.01f)
+            weight = Random.Range(-1.0f, 1.0f);        
+        else if (chanceToMutate < 0.1f)
+            weight = Random.Range(weight - 0.05f, weight + 0.05f);
     }
 }
