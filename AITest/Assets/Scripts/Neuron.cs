@@ -77,7 +77,7 @@ public class Neuron
         for(int i = 0; i < connections.Count; i++)
         {
             float tempWeight = connections[i].weight;
-            connections[i].weight += 0.4f * gradientDescent * connections[i].fromNeuron.outputValue * 0.5f;
+            connections[i].weight += 0.9f * gradientDescent * connections[i].fromNeuron.outputValue;
             //Debug.Log($"{tempWeight} || {connections[i].weight}");
         }
     }

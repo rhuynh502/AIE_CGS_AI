@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,12 +10,13 @@ public class AIPlayer : MonoBehaviour
     private Network network;
 
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private float moveSpeed = 4;
+    [SerializeField] private int moveSpeed = 7;
+    [SerializeField] private float angleInDegrees = 65.0f;
     // These variables will be used to calculate fitness
     // These will change depending on what you need the ai to accomplish
     float timeAlive;
     public bool isAlive = true;
-    private float lifetime = 480;
+    private float lifetime = 15;
 
     // Input amount is the amount of inputs of data the network
     // needs to make decisions
@@ -34,11 +36,12 @@ public class AIPlayer : MonoBehaviour
     List<float> targets = new List<float>();
 
     // These variables determine what the ai should do
-    [SerializeField] private List<bool> movementCommands;
-    private float amountOfCasts = 10;
-    private Collider collider;
+    private float amountOfCasts;
 
     Vector3 respawnPos;
+    Quaternion respawnRot;
+    public Vector3 latestCheckpointPos;
+    public Vector3 latestCheckpointPrefDir;
 
     // need to make a class that spawns a bunch of players
     // that class also deals with when crossbreeding occurs.
@@ -49,13 +52,16 @@ public class AIPlayer : MonoBehaviour
     {
         network = new Network(inputAmount, outputAmount, hiddenLayerAmount);
         network.OrderNetwork();
+
         respawnPos = transform.position;
-        collider = GetComponent<Collider>();
+        respawnRot = transform.rotation;
+
+        latestCheckpointPos = respawnPos;
     }
 
     public void CalculateFitnessScore()
     {
-        fitnessScore += Vector3.Distance(respawnPos, transform.position) - (Vector3.Distance(respawnPos, transform.position) / timeAlive);
+        fitnessScore += Vector3.Distance(latestCheckpointPos, transform.position);
     }
 
     public void Think()
@@ -76,31 +82,34 @@ public class AIPlayer : MonoBehaviour
         // write up their own inputs that the ai will take in
         float largestDist = 0;
 
-        float viewAngle = 90f;
-        float rayAngleDif = (viewAngle * 2) / amountOfCasts;
+
+        float rayAngleDif = (angleInDegrees * 2) / inputAmount;
+        float largestAngle = 0;
 
         // Raycasts forward
-        for(int i = 0; i <= amountOfCasts; i++)
+        for (int i = 0; i < inputAmount; i++)
         {
-            float rayAngle = viewAngle - (i * rayAngleDif);
+            float rayAngle = angleInDegrees - (i * rayAngleDif);
             // Change to raycast mask to only hit walls
             if (Physics.Raycast(transform.position, Quaternion.Euler(0, rayAngle, 0) * transform.TransformDirection(transform.forward), out RaycastHit hitInfo, Mathf.Infinity, layerMask))
             {
-                if(hitInfo.collider.CompareTag("Wall"))
+                if (hitInfo.collider.CompareTag("Wall"))
                 {
                     dependantVariables.Add(hitInfo.distance);
                     if (hitInfo.distance > largestDist)
                     {
                         largestDist = hitInfo.distance;
+                        largestAngle = rayAngle;
                     }
                     continue;
                 }
-                
+
             }
             dependantVariables.Add(0);
         }
 
-        // Raycast backwards
+
+        /*// Raycast backwards
         if (Physics.Raycast(transform.position, -transform.TransformDirection(transform.forward), out RaycastHit behindHitInfo, Mathf.Infinity, layerMask))
         {
             if (behindHitInfo.collider.CompareTag("Wall"))
@@ -111,7 +120,7 @@ public class AIPlayer : MonoBehaviour
                 dependantVariables.Add(0);
         }
         else
-            dependantVariables.Add(0);
+            dependantVariables.Add(0);*/
 
         for (int i = 0; i < inputAmount; i++)
         {
@@ -119,11 +128,10 @@ public class AIPlayer : MonoBehaviour
         }
 
         outputVariables = network.FeedForward(dependantVariables);
-        targets.Add(1);
-        if (outputVariables[1] > 0)
-            targets.Add(-0.9f);
-        else
-            targets.Add(0.9f);
+        targets.Add(0);
+        // check which direction it needs to turn
+        targets.Add(Vector3.Dot(Quaternion.Euler(0, largestAngle, 0) * transform.TransformDirection(transform.forward), 
+            transform.TransformDirection(transform.right)));
 
         if (timeAlive > lifetime)
             isAlive = false;
@@ -133,11 +141,18 @@ public class AIPlayer : MonoBehaviour
     // Actions are performed based off of the outputs given by the network
     private void PerformActions()
     {
+        if (fitnessScore < -50)
+            isAlive = false;
+
         Vector3 initialPos = transform.position;
         AssessSituation();
+        // Check if there is a change in direction and penalise the ai
+        if (velocityDirection * outputVariables[0] < 0)
+            fitnessScore -= 8;
+
         velocityDirection = outputVariables[0];
-        transform.position += transform.TransformDirection(transform.forward) * outputVariables[0] * Time.deltaTime;
-        transform.Rotate(0, 5 * outputVariables[1] * Time.deltaTime, 0);
+        transform.position += transform.TransformDirection(transform.forward) * moveSpeed * outputVariables[0] * Time.deltaTime;
+        transform.Rotate(0, 15.0f * outputVariables[1] * Time.deltaTime, 0);
 
     }
 
@@ -147,15 +162,14 @@ public class AIPlayer : MonoBehaviour
             return;
         Gizmos.color = Color.red;
 
-        float viewAngle = 90f;
-        float rayAngleDif = (viewAngle * 2) / amountOfCasts;
-        for (int i = 0; i <= amountOfCasts; i++)
+        float rayAngleDif = (angleInDegrees * 2) / inputAmount;
+        for (int i = 0; i < inputAmount; i++)
         {
-            float rayAngle = viewAngle - (i * rayAngleDif);
+            float rayAngle = angleInDegrees - (i * rayAngleDif);
             Gizmos.DrawRay(transform.position, Quaternion.Euler(0, rayAngle, 0) * transform.TransformDirection(transform.forward) * 25);
 
         }
-        Gizmos.DrawRay(transform.position, -transform.TransformDirection(transform.forward) * 25);
+        //Gizmos.DrawRay(transform.position, -transform.TransformDirection(transform.forward) * 25);
     }
 
     // The functions added past this point are specifically for the racing example
@@ -164,12 +178,11 @@ public class AIPlayer : MonoBehaviour
     {
         if(collision.collider.CompareTag("Wall"))
         {
+            // Penalise the AI for dying
+            fitnessScore -= 22;
             isAlive = false;
         }
-        else
-        {
-            Physics.IgnoreCollision(collision.collider, collider);
-        }
+
     }
 
     public void Mutate()
@@ -196,8 +209,30 @@ public class AIPlayer : MonoBehaviour
     public void ResetTime()
     {
         timeAlive = 0;
+    }
 
+    public void Respawn()
+    {
         transform.position = respawnPos;
-        transform.rotation = Quaternion.Euler(0, 45, 0);
+        transform.rotation = respawnRot;
+
+        isAlive = true;
+        fitnessScore = 0;
+
+        ResetTime();
+    }
+    public float GetTimeLeft()
+    {
+        return lifetime / timeAlive;
+    }
+
+    public void AddTime()
+    {
+        timeAlive -= 5;
+    }
+
+    public void SubtractTime()
+    {
+        timeAlive += 5;
     }
 }

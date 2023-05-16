@@ -116,7 +116,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 128
-  moveSpeed: 0
+  moveSpeed: 7
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
