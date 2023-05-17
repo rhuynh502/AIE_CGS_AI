@@ -10,18 +10,17 @@ public class GoalPosts : MonoBehaviour
     {
         if(other.TryGetComponent<AIPlayer>(out AIPlayer player))
         {
-            if (Vector3.Dot(intendedDirection, player.transform.TransformDirection(player.transform.forward) * player.velocityDirection) >= 0)
+            if (Vector3.Dot(intendedDirection, player.transform.TransformDirection(player.transform.forward) * player.velocityDirection) >= 0.25f)
             {
-                player.fitnessScore += 25;
+                player.CalculateFitnessScore();
                 player.AddTime();
             }
             else
             {
-                player.fitnessScore -= 25;
                 player.SubtractTime();
             }
 
-            player.latestCheckpointPos = transform.position;
+            player.latestCheckpointPos = player.transform.position;
  
         }
     }
@@ -32,12 +31,10 @@ public class GoalPosts : MonoBehaviour
         {
             if (Vector3.Dot(intendedDirection, player.transform.TransformDirection(player.transform.forward) * player.velocityDirection) >= 0)
             {
-                player.fitnessScore += 25;
                 player.AddTime();
             }
             else
             {
-                player.fitnessScore -= 25;
                 player.SubtractTime();
             }
 

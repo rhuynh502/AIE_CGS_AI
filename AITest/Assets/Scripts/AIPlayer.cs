@@ -141,14 +141,11 @@ public class AIPlayer : MonoBehaviour
     // Actions are performed based off of the outputs given by the network
     private void PerformActions()
     {
-        if (fitnessScore < -50)
+        if (fitnessScore < 0)
             isAlive = false;
 
         Vector3 initialPos = transform.position;
         AssessSituation();
-        // Check if there is a change in direction and penalise the ai
-        if (velocityDirection * outputVariables[0] < 0)
-            fitnessScore -= 8;
 
         velocityDirection = outputVariables[0];
         transform.position += transform.TransformDirection(transform.forward) * moveSpeed * outputVariables[0] * Time.deltaTime;
@@ -178,8 +175,7 @@ public class AIPlayer : MonoBehaviour
     {
         if(collision.collider.CompareTag("Wall"))
         {
-            // Penalise the AI for dying
-            fitnessScore -= 22;
+            CalculateFitnessScore();
             isAlive = false;
         }
 
@@ -228,11 +224,11 @@ public class AIPlayer : MonoBehaviour
 
     public void AddTime()
     {
-        timeAlive -= 5;
+        timeAlive -= 7;
     }
 
     public void SubtractTime()
     {
-        timeAlive += 5;
+        timeAlive += 8;
     }
 }

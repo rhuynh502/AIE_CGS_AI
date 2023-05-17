@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -192,7 +192,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -333,7 +333,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -474,7 +474,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -680,7 +680,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -821,7 +821,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -893,6 +893,92 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78543835}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &87303737
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1742664904}
+    m_Modifications:
+    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632425, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: intendedDirection.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632425, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: intendedDirection.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632426, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_Size.x
+      value: 0.80971974
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632426, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_Size.z
+      value: 1.0666435
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632426, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_Center.x
+      value: 0.29831022
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632426, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_Center.z
+      value: -0.12216411
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198412618106632431, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+      propertyPath: m_Name
+      value: Goal (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+--- !u!4 &91527048 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+  m_PrefabInstance: {fileID: 1737213576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &119814469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
@@ -967,7 +1053,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -1108,7 +1194,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -1249,7 +1335,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -1440,7 +1526,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -1596,7 +1682,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -1737,7 +1823,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -1878,7 +1964,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -2019,7 +2105,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -2160,7 +2246,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -2301,7 +2387,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -2517,7 +2603,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -2658,7 +2744,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -2739,7 +2825,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2864,7 +2950,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -2936,11 +3022,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272856584}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &273130406 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-  m_PrefabInstance: {fileID: 1353881634}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &289885850
 GameObject:
   m_ObjectHideFlags: 0
@@ -3010,7 +3091,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -3082,67 +3163,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289885850}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &331908777
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1742664904}
-    m_Modifications:
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 23.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632425, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: intendedDirection.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632431, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_Name
-      value: Goal (14)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
 --- !u!1 &333694124
 GameObject:
   m_ObjectHideFlags: 0
@@ -3197,7 +3217,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -3353,7 +3373,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -3494,7 +3514,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -3635,7 +3655,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -3748,6 +3768,8 @@ Transform:
   - {fileID: 240240938}
   - {fileID: 1345749978}
   - {fileID: 1936300071}
+  - {fileID: 1859278390}
+  - {fileID: 91527048}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3820,7 +3842,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -3961,7 +3983,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -4102,7 +4124,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -4243,7 +4265,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -4384,7 +4406,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -4510,7 +4532,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -4666,7 +4688,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -4877,7 +4899,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -5018,7 +5040,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -5159,7 +5181,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -5285,7 +5307,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -5441,7 +5463,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -5582,7 +5604,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -5723,7 +5745,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -5864,7 +5886,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -6005,7 +6027,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -6146,7 +6168,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -6430,7 +6452,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -6571,7 +6593,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -6712,7 +6734,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -6838,7 +6860,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -6979,7 +7001,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -7286,7 +7308,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -7427,7 +7449,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -7568,7 +7590,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -7709,7 +7731,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -7802,11 +7824,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
       propertyPath: m_LocalScale.z
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.94
+      value: -8.27
       objectReference: {fileID: 0}
     - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8059,7 +8081,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -8215,7 +8237,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -8356,7 +8378,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -8497,7 +8519,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -8643,7 +8665,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -8724,7 +8746,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8849,7 +8871,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -8930,11 +8952,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.92
+      value: -15.06
       objectReference: {fileID: 0}
     - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9032,7 +9054,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -9173,7 +9195,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -9322,11 +9344,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
---- !u!4 &1116623676 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-  m_PrefabInstance: {fileID: 2106474813}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1118135747
 GameObject:
   m_ObjectHideFlags: 0
@@ -9396,7 +9413,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -9542,7 +9559,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -9614,6 +9631,71 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124311139}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1132233163
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 346987750}
+    m_Modifications:
+    - target: {fileID: 4040201140002306290, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_Name
+      value: Wall (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306290, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
 --- !u!1 &1134954113
 GameObject:
   m_ObjectHideFlags: 0
@@ -9683,7 +9765,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -9894,7 +9976,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -10020,7 +10102,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -10161,7 +10243,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -10317,7 +10399,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -10389,11 +10471,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204585096}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1220889677 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-  m_PrefabInstance: {fileID: 331908777}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1227251446
 GameObject:
   m_ObjectHideFlags: 0
@@ -10463,7 +10540,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -10604,7 +10681,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -10697,11 +10774,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
       propertyPath: m_LocalScale.z
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.88
+      value: -8.27
       objectReference: {fileID: 0}
     - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10885,7 +10962,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -11026,7 +11103,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -11167,7 +11244,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -11248,7 +11325,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11373,7 +11450,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -11514,7 +11591,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -11586,145 +11663,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327475826}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1337991685
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1742664904}
-    m_Modifications:
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -36.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632425, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: intendedDirection.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632425, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: intendedDirection.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632431, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_Name
-      value: Goal (18)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
 --- !u!4 &1345749978 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
   m_PrefabInstance: {fileID: 949688978}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1353881634
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1742664904}
-    m_Modifications:
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -19.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632425, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: intendedDirection.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632426, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_Size.x
-      value: 0.936996
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632426, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_Center.x
-      value: -0.03150201
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632431, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_Name
-      value: Goal (5)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
 --- !u!1001 &1355517462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11864,7 +11807,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -12005,7 +11948,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -12146,7 +12089,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -12287,7 +12230,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -12428,7 +12371,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -12569,7 +12512,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -12710,7 +12653,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -12851,7 +12794,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -12977,7 +12920,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -13133,7 +13076,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -13205,11 +13148,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500571204}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1508281998 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-  m_PrefabInstance: {fileID: 1337991685}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1510272720
 GameObject:
   m_ObjectHideFlags: 0
@@ -13279,7 +13217,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -13420,7 +13358,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -13566,7 +13504,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -13707,7 +13645,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -13853,7 +13791,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -13994,7 +13932,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -14135,7 +14073,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -14276,7 +14214,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -14417,7 +14355,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -14489,6 +14427,71 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727097046}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1737213576
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 346987750}
+    m_Modifications:
+    - target: {fileID: 4040201140002306290, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_Name
+      value: Wall (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306290, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
 --- !u!1 &1742664903
 GameObject:
   m_ObjectHideFlags: 0
@@ -14519,15 +14522,11 @@ Transform:
   m_Children:
   - {fileID: 1107162962}
   - {fileID: 119814469}
-  - {fileID: 1116623676}
-  - {fileID: 2086319532}
   - {fileID: 1536077681}
-  - {fileID: 1220889677}
-  - {fileID: 1508281998}
   - {fileID: 1030809964}
   - {fileID: 1609257136}
   - {fileID: 1873272250}
-  - {fileID: 273130406}
+  - {fileID: 1853273164}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14600,7 +14599,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -14741,7 +14740,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -14882,7 +14881,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -15023,7 +15022,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -15164,7 +15163,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -15305,7 +15304,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -15446,7 +15445,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -15518,6 +15517,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839689344}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1853273164 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
+  m_PrefabInstance: {fileID: 87303737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1856121953
 GameObject:
   m_ObjectHideFlags: 0
@@ -15587,7 +15591,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -15659,6 +15663,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856121953}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1859278390 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
+  m_PrefabInstance: {fileID: 1132233163}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1873272250 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
@@ -15733,7 +15742,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -15874,7 +15883,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -16080,7 +16089,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -16261,7 +16270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.94
+      value: -15.23
       objectReference: {fileID: 0}
     - target: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16445,7 +16454,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -16586,7 +16595,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -16727,7 +16736,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -16799,71 +16808,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006204788}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &2018086568
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1742664904}
-    m_Modifications:
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -29.31
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632425, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: intendedDirection.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632425, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: intendedDirection.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632431, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_Name
-      value: Goal (8)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
 --- !u!1 &2022140669
 GameObject:
   m_ObjectHideFlags: 0
@@ -16933,7 +16877,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -17074,7 +17018,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -17146,11 +17090,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068293025}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &2086319532 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-  m_PrefabInstance: {fileID: 2018086568}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2086971680
 GameObject:
   m_ObjectHideFlags: 0
@@ -17220,7 +17159,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -17297,83 +17236,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4040201140002306294, guid: 9594b1e41a60b654e9a2c0155b0f4d79, type: 3}
   m_PrefabInstance: {fileID: 1920093194}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2106474813
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1742664904}
-    m_Modifications:
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632424, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632425, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: intendedDirection.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632426, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_Size.x
-      value: 0.936996
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632426, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_Size.z
-      value: 0.9820403
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632426, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_Center.x
-      value: -0.03150201
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632426, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_Center.z
-      value: 0.05277127
-      objectReference: {fileID: 0}
-    - target: {fileID: 2198412618106632431, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
-      propertyPath: m_Name
-      value: Goal (4)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ce4e03e541c98da48af2af14885a8dea, type: 3}
 --- !u!1 &2109938337
 GameObject:
   m_ObjectHideFlags: 0
@@ -17443,7 +17305,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -17569,7 +17431,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -17725,7 +17587,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -17866,7 +17728,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
@@ -17992,7 +17854,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
-  angleInDegrees: 65
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2

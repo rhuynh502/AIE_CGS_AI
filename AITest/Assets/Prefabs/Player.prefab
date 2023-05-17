@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8590225533783987254}
   - component: {fileID: 8590225533783987255}
   - component: {fileID: 8590225533783987272}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Player
   m_TagString: Robot
   m_Icon: {fileID: 0}
@@ -117,12 +117,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 7
+  angleInDegrees: 120
   isAlive: 1
   inputAmount: 12
   outputAmount: 2
-  hiddenLayerAmount: 8
+  hiddenLayerAmount: 16
   velocityDirection: 0
-  movementCommands: 0000
+  latestCheckpointPos: {x: 0, y: 0, z: 0}
+  latestCheckpointPrefDir: {x: 0, y: 0, z: 0}
 --- !u!54 &8590225533783987272
 Rigidbody:
   m_ObjectHideFlags: 0

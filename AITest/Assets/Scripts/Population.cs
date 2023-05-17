@@ -97,7 +97,7 @@ public class Population : MonoBehaviour
 
         for(int i = 0; i < population.Count; i++)
         {
-            population[i].CalculateFitnessScore();
+            //population[i].CalculateFitnessScore();
             if (population[i].fitnessScore > bestScore)
             {
                 bestScore = population[i].fitnessScore;
@@ -107,20 +107,21 @@ public class Population : MonoBehaviour
 
         population.Sort((a, b) => (CompareFitness(a.fitnessScore, b.fitnessScore)));
 
-        //Network baby = CrossBreed(population[Random.Range(0, 5)].GetNetwork(), population[Random.Range(5, 10)].GetNetwork());
+        Network bestOfThisGen = population[0].GetNetwork();
 
-        Network leader1 = population[0].GetNetwork();
-        Network leader2 = population[Random.Range(1, 3)].GetNetwork();
+        Network baby = CrossBreed(bestPlayer, bestOfThisGen);
 
         for (int i = 0; i < population.Count; i++)
         {
-            if (i < population.Count / 2)
-                population[i].SetNetwork(leader1.CloneNetwork());
+            if(i < population.Count / 3)
+                population[i].SetNetwork(bestPlayer.CloneNetwork());
+            else if(i < 2 * population.Count / 3)
+                population[i].SetNetwork(bestOfThisGen.CloneNetwork());
             else
-                population[i].SetNetwork(leader2.CloneNetwork());
-
-            // Dont mutate the first one to keep consistency
-            population[i].Mutate();
+                population[i].SetNetwork(baby.CloneNetwork());
+            
+            if(i != 0 )
+                population[i].Mutate();
             population[i].Respawn();
         }
 
@@ -159,12 +160,13 @@ public class Population : MonoBehaviour
 
         for(int i = 0; i < babiesConnections.Count; i++)
         {
-            if(Random.value > 0.25)
+            if(Random.value > 0.15)
                 babiesConnections[i].weight = parent1Connections[i].weight;
             else
                 babiesConnections[i].weight = parent2Connections[i].weight;
         }
 
+        baby.ResetNeurons();
         baby.OrderNetwork();
 
         return baby;
@@ -172,6 +174,8 @@ public class Population : MonoBehaviour
 
     private int CompareFitness(float a, float b)
     {
+        if(a == b) return 0;
+
         return a < b ? 1 : -1;
     }
 

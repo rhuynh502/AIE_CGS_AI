@@ -178,7 +178,10 @@ public class Network
             for(int j = 0; j < neurons.Count; j++)
             {
                 if (neurons[j].layer == i)
+                {
                     orderedNetwork.Add(neurons[j]);
+
+                }
             }
         }
 
@@ -210,9 +213,17 @@ public class Network
             clone.connections[i].weight = connections[i].weight;
         }
 
+        clone.ResetNeurons();
         clone.OrderNetwork();
 
         return clone;
     }
 
+    public void ResetNeurons()
+    {
+        foreach(Neuron neuron in neurons)
+        {
+            neuron.SetInputSum(0);
+        }
+    }
 }
