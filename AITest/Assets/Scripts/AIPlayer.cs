@@ -10,8 +10,11 @@ public class AIPlayer : MonoBehaviour
     private Network network;
 
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private int moveSpeed = 7;
-    [SerializeField] private float angleInDegrees = 65.0f;
+    [SerializeField] private PlayerStats stats;
+    private int moveSpeed;
+    private float turnSpeed;
+    private float angleInDegrees;
+    [SerializeField] private bool canLearn;
     // These variables will be used to calculate fitness
     // These will change depending on what you need the ai to accomplish
     float timeAlive;
@@ -33,11 +36,6 @@ public class AIPlayer : MonoBehaviour
     List<float> outputVariables = new List<float>();
     public float velocityDirection;
 
-    List<float> targets = new List<float>();
-
-    // These variables determine what the ai should do
-    private float amountOfCasts;
-
     Vector3 respawnPos;
     Quaternion respawnRot;
     public Vector3 latestCheckpointPos;
@@ -55,6 +53,10 @@ public class AIPlayer : MonoBehaviour
 
         respawnPos = transform.position;
         respawnRot = transform.rotation;
+
+        moveSpeed = stats.moveSpeed;
+        turnSpeed = stats.turnSpeed;
+        angleInDegrees = stats.angleSpread;
 
         latestCheckpointPos = respawnPos;
     }
@@ -77,14 +79,13 @@ public class AIPlayer : MonoBehaviour
     private void AssessSituation()
     {
         dependantVariables.Clear();
-        targets.Clear();
         // This is where modularity comes in. The user should be able to
         // write up their own inputs that the ai will take in
         float largestDist = 0;
 
 
         float rayAngleDif = (angleInDegrees * 2) / inputAmount;
-        float largestAngle = 0;
+
 
         // Raycasts forward
         for (int i = 0; i < inputAmount; i++)
@@ -99,7 +100,6 @@ public class AIPlayer : MonoBehaviour
                     if (hitInfo.distance > largestDist)
                     {
                         largestDist = hitInfo.distance;
-                        largestAngle = rayAngle;
                     }
                     continue;
                 }
@@ -108,30 +108,12 @@ public class AIPlayer : MonoBehaviour
             dependantVariables.Add(0);
         }
 
-
-        /*// Raycast backwards
-        if (Physics.Raycast(transform.position, -transform.TransformDirection(transform.forward), out RaycastHit behindHitInfo, Mathf.Infinity, layerMask))
-        {
-            if (behindHitInfo.collider.CompareTag("Wall"))
-            {
-                dependantVariables.Add(behindHitInfo.distance);            
-            }
-            else
-                dependantVariables.Add(0);
-        }
-        else
-            dependantVariables.Add(0);*/
-
         for (int i = 0; i < inputAmount; i++)
         {
             dependantVariables[i] = 1 - dependantVariables[i] / largestDist;
         }
 
         outputVariables = network.FeedForward(dependantVariables);
-        targets.Add(0);
-        // check which direction it needs to turn
-        targets.Add(Vector3.Dot(Quaternion.Euler(0, largestAngle, 0) * transform.TransformDirection(transform.forward), 
-            transform.TransformDirection(transform.right)));
 
         if (timeAlive > lifetime)
             isAlive = false;
@@ -149,7 +131,7 @@ public class AIPlayer : MonoBehaviour
 
         velocityDirection = outputVariables[0];
         transform.position += transform.TransformDirection(transform.forward) * moveSpeed * outputVariables[0] * Time.deltaTime;
-        transform.Rotate(0, 15.0f * outputVariables[1] * Time.deltaTime, 0);
+        transform.Rotate(0, turnSpeed * outputVariables[1] * Time.deltaTime, 0);
 
     }
 
@@ -183,13 +165,8 @@ public class AIPlayer : MonoBehaviour
 
     public void Mutate()
     {
-        //BackPropagate();
-        network.Mutate();
-    }
-
-    public void BackPropagate()
-    {
-        network.BackPropagate(targets);
+        if(canLearn)
+            network.Mutate();
     }
 
     public Network GetNetwork()

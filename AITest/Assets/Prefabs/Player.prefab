@@ -116,8 +116,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 128
-  moveSpeed: 7
-  angleInDegrees: 120
+  stats: {fileID: 11400000, guid: 33cefe5f968ecc54b8de7750f1cc65b5, type: 2}
   isAlive: 1
   inputAmount: 12
   outputAmount: 2

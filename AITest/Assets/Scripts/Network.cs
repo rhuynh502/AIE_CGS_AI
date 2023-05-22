@@ -126,30 +126,6 @@ public class Network
         return outputsForPlayer;
     }
 
-    public void BackPropagate(List<float> targets)
-    {
-        for(int i = 0; i < outputs; i++)
-        {
-            neurons[inputs + i].GradientDescent(targets[i]);
-        }
-
-        for(int i = 0; i < hiddenLayerAmountOfNodes; i++)
-        {
-            neurons[biasNeuronLocation + 1 + i].GradientDescent();
-            neurons[biasNeuronLocation + 1 + i].ChangeWeights();
-        }
-
-        for (int i = 0; i < outputs; i++)
-        {
-            neurons[inputs + i].ChangeWeights();
-        }
-        
-        for(int i = 0; i < connections.Count; i++)
-        {
-            connections[i].Mutate();
-        }
-    }
-
     // This function will give all required data to the neurons
     private void ConnectNetwork()
     {
