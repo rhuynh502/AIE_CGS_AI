@@ -10,7 +10,7 @@ public class GoalPosts : MonoBehaviour
     {
         if(other.TryGetComponent<AIPlayer>(out AIPlayer player))
         {
-            if (Vector3.Dot(intendedDirection, player.transform.TransformDirection(player.transform.forward) * player.velocityDirection) >= 0.25f)
+            if (Vector3.Dot(intendedDirection, player.transform.TransformDirection(player.transform.forward) * player.GetCar().velocityDirection) >= 0.25f)
             {
                 player.CalculateFitnessScore();
                 player.AddTime();
@@ -20,7 +20,7 @@ public class GoalPosts : MonoBehaviour
                 player.SubtractTime();
             }
 
-            player.latestCheckpointPos = player.transform.position;
+            player.GetCar().SetLatestCheckpointPos(transform.position);
  
         }
     }
@@ -29,7 +29,7 @@ public class GoalPosts : MonoBehaviour
     {
         if (other.TryGetComponent<AIPlayer>(out AIPlayer player))
         {
-            if (Vector3.Dot(intendedDirection, player.transform.TransformDirection(player.transform.forward) * player.velocityDirection) >= 0)
+            if (Vector3.Dot(intendedDirection, player.transform.TransformDirection(player.transform.forward) * player.GetCar().velocityDirection) >= 0)
             {
                 player.AddTime();
             }

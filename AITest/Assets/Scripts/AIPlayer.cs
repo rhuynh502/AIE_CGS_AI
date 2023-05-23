@@ -9,37 +9,33 @@ public class AIPlayer : MonoBehaviour
     public float fitnessScore;
     private Network network;
 
-    [SerializeField] private LayerMask layerMask;
-    [SerializeField] private PlayerStats stats;
-    private int moveSpeed;
-    private float turnSpeed;
-    private float angleInDegrees;
     [SerializeField] private bool canLearn;
+    [SerializeField] private bool canDie;
     // These variables will be used to calculate fitness
     // These will change depending on what you need the ai to accomplish
-    float timeAlive;
     public bool isAlive = true;
-    private float lifetime = 15;
+    private float timeAlive;
+    private float lifetime;
+
+    private AICar carController;
+    private float angleInDegrees;
 
     // Input amount is the amount of inputs of data the network
     // needs to make decisions
-    [SerializeField] private int inputAmount;
+    private int inputAmount;
     // Output amount is the amount of outputs the ai gives out
     // and makes an action depending on these outputs
-    [SerializeField] private int outputAmount;
-    [SerializeField] private int hiddenLayerAmount;
+    private int outputAmount;
+    // Hidden layer holds the nodes that lie in between the inputs and outputs.
+    // You can play around with how many you want in here.
+    private int hiddenLayerAmount;
 
+    private LayerMask layerMask;
 
     // These are the inputs the network takes
     List<float> dependantVariables = new List<float>();
     // These are the outputs the network calculates
     List<float> outputVariables = new List<float>();
-    public float velocityDirection;
-
-    Vector3 respawnPos;
-    Quaternion respawnRot;
-    public Vector3 latestCheckpointPos;
-    public Vector3 latestCheckpointPrefDir;
 
     // need to make a class that spawns a bunch of players
     // that class also deals with when crossbreeding occurs.
@@ -48,22 +44,25 @@ public class AIPlayer : MonoBehaviour
 
     private void Awake()
     {
+        carController = GetComponent<AICar>();
+
+        angleInDegrees = carController.GetAngle();
+        lifetime = carController.stats.lifetime;
+
+        inputAmount = carController.stats.amountOfInputs;
+        outputAmount = carController.stats.amountOfOutputs;
+        hiddenLayerAmount = carController.stats.amountOfHiddenNodes;
+
+        layerMask = carController.stats.layersToScan;
+
         network = new Network(inputAmount, outputAmount, hiddenLayerAmount);
         network.OrderNetwork();
-
-        respawnPos = transform.position;
-        respawnRot = transform.rotation;
-
-        moveSpeed = stats.moveSpeed;
-        turnSpeed = stats.turnSpeed;
-        angleInDegrees = stats.angleSpread;
-
-        latestCheckpointPos = respawnPos;
     }
 
     public void CalculateFitnessScore()
     {
-        fitnessScore += Vector3.Distance(latestCheckpointPos, transform.position);
+        fitnessScore += Vector3.Distance(carController.GetLatestCheckPoint(), transform.position);
+        
     }
 
     public void Think()
@@ -75,12 +74,14 @@ public class AIPlayer : MonoBehaviour
     }
 
     // This is where the AI uses the inputs given by the user
-    // and determines the values given into the network
+    // and determines the values it will give to the network
     private void AssessSituation()
     {
         dependantVariables.Clear();
         // This is where modularity comes in. The user should be able to
-        // write up their own inputs that the ai will take in
+        // write up their own inputs that the ai will take in. In this case, the
+        // AI needs to know where the walls are in respect to its own position. These
+        // Raycasts give that distance to the player.
         float largestDist = 0;
 
 
@@ -113,9 +114,11 @@ public class AIPlayer : MonoBehaviour
             dependantVariables[i] = 1 - dependantVariables[i] / largestDist;
         }
 
+        // The amount of dependant variables must be the same as the amount of inputs to the network.
+        // If it is not, it can cause some errors.
         outputVariables = network.FeedForward(dependantVariables);
 
-        if (timeAlive > lifetime)
+        if (canDie && timeAlive > lifetime)
             isAlive = false;
         
     }
@@ -129,10 +132,7 @@ public class AIPlayer : MonoBehaviour
         Vector3 initialPos = transform.position;
         AssessSituation();
 
-        velocityDirection = outputVariables[0];
-        transform.position += transform.TransformDirection(transform.forward) * moveSpeed * outputVariables[0] * Time.deltaTime;
-        transform.Rotate(0, turnSpeed * outputVariables[1] * Time.deltaTime, 0);
-
+        carController.Drive(outputVariables);
     }
 
     private void OnDrawGizmos()
@@ -151,11 +151,9 @@ public class AIPlayer : MonoBehaviour
         //Gizmos.DrawRay(transform.position, -transform.TransformDirection(transform.forward) * 25);
     }
 
-    // The functions added past this point are specifically for the racing example
-    // Use these as a scaffold for what you want to be making
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.CompareTag("Wall"))
+        if(canDie && collision.collider.CompareTag("Wall"))
         {
             CalculateFitnessScore();
             isAlive = false;
@@ -186,8 +184,8 @@ public class AIPlayer : MonoBehaviour
 
     public void Respawn()
     {
-        transform.position = respawnPos;
-        transform.rotation = respawnRot;
+        transform.position = carController.GetRespawnPos();
+        transform.rotation = carController.GetRespawnRot();
 
         isAlive = true;
         fitnessScore = 0;
@@ -207,5 +205,10 @@ public class AIPlayer : MonoBehaviour
     public void SubtractTime()
     {
         timeAlive += 8;
+    }
+
+    public AICar GetCar()
+    {
+        return carController;
     }
 }

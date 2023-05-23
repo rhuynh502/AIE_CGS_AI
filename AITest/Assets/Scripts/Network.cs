@@ -93,6 +93,7 @@ public class Network
         }
     }
 
+    // This function will give all required data to the neurons
     public List<float> FeedForward(List<float> inputsFromPlayer)
     {
         // Set the outputs for the input nodes. We know where they are in the
@@ -126,7 +127,7 @@ public class Network
         return outputsForPlayer;
     }
 
-    // This function will give all required data to the neurons
+    // This function connects the neurons to each other
     private void ConnectNetwork()
     {
         // reset input sums for next feedforward
@@ -143,7 +144,8 @@ public class Network
     }
 
     // Currently the order of nodes in the network start from 0 -> 1 -> random amount of layers
-    // for the network to go through the correct nodes from start to finish
+    // for the network to go through the correct nodes from start to finish. This will sort the network
+    // for the feedforward process where it starts from 0 and couns up per layer.
     public void OrderNetwork()
     {
         ConnectNetwork();

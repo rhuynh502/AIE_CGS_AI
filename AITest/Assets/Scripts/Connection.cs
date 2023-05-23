@@ -24,7 +24,7 @@ public class Connection
 
         if(chanceToMutate < 0.01f)
             weight = Random.Range(-1.0f, 1.0f);        
-        else if (chanceToMutate < 0.05f)
-            weight = Random.Range(weight - 0.01f, weight + 0.01f);
+        else if (chanceToMutate < 0.07f)
+            weight = Random.Range(weight - 0.03f, weight + 0.03f);
     }
 }

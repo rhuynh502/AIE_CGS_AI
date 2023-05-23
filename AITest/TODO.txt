@@ -1,0 +1,18 @@
+make scriptable obejct for car stats. - DONE
+
+attempt to split the aiplayer to an ai brain and an ai player. - DONE
+
+character controller for player - DONE
+
+make a racing game.
+- 3 laps
+- varying ai levels
+- win when player finishes 3 laps
+- loses when an AI finishes 3 laps
+
+make it so that you can load an ai without letting it train and die.
+- most likely another prefab or body or have a bool that toggles training - DONE
+
+Make materials for ai and player - DONE
+
+make new scriptable for ai stats - DONE

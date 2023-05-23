@@ -51,6 +51,19 @@ public class Neuron
     {
         return inputValue * (1 - inputValue);
     }
+
+    private float Linear(float inputValue)
+    {
+        return Mathf.Clamp(inputValue, -1, 1);
+    }
+
+    private float ParametricRectifiedLinear(float inputValue)
+    {
+        if (inputValue < 0)
+            return Mathf.Clamp(inputValue / 4, -1, 0);
+        else
+            return Mathf.Clamp01(inputValue);
+    }
     
     private float TanhDerivative(float inputValue)
     {

@@ -2,6 +2,7 @@ using OpenCover.Framework.Model;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Population : MonoBehaviour
@@ -62,7 +63,7 @@ public class Population : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!CheckForAlive())
         {
@@ -73,6 +74,7 @@ public class Population : MonoBehaviour
                     population[i].Think();
                 }
             }
+
         }
         else
         {
@@ -94,37 +96,36 @@ public class Population : MonoBehaviour
 
     private void RegeneratePopulation()
     {
-
-        for(int i = 0; i < population.Count; i++)
+        Parallel.For(0, population.Count, i =>
         {
-            //population[i].CalculateFitnessScore();
             if (population[i].fitnessScore > bestScore)
             {
                 bestScore = population[i].fitnessScore;
                 bestPlayer = population[i].GetNetwork();
             }
-        }
+        });
 
         population.Sort((a, b) => (CompareFitness(a.fitnessScore, b.fitnessScore)));
 
         Network bestOfThisGen = population[0].GetNetwork();
+        Network baby;
 
-        Network baby = CrossBreed(bestPlayer, bestOfThisGen);
+        if (population[0].fitnessScore > bestScore)
+            baby = CrossBreed(bestOfThisGen, bestPlayer);
+        else
+            baby = CrossBreed(bestPlayer, bestOfThisGen);
 
         for (int i = 0; i < population.Count; i++)
         {
-            if(i < population.Count / 3)
+            if (i < population.Count / 2)
                 population[i].SetNetwork(bestPlayer.CloneNetwork());
-            else if(i < 2 * population.Count / 3)
-                population[i].SetNetwork(bestOfThisGen.CloneNetwork());
             else
                 population[i].SetNetwork(baby.CloneNetwork());
-            
-            if(i != 0 )
+
+            if (i != 0)
                 population[i].Mutate();
             population[i].Respawn();
         }
-
     }
 
     private void OnDestroy()
@@ -152,24 +153,44 @@ public class Population : MonoBehaviour
     // This function returns a cross breed of two selected parents. _parent 1 should have the better fitness score
     private Network CrossBreed(Network _parent1, Network _parent2)
     {
-        Network baby = new Network(_parent1.GetInputsAmount(), _parent1.GetOutputsAmount(), _parent1.GetHiddenLayerAmount());
+        Network baby = _parent1.CloneNetwork();
 
         List<Connection> babiesConnections = baby.GetConnections();
-        List<Connection> parent1Connections = _parent1.GetConnections();
+
         List<Connection> parent2Connections = _parent2.GetConnections();
 
         for(int i = 0; i < babiesConnections.Count; i++)
         {
-            if(Random.value > 0.15)
-                babiesConnections[i].weight = parent1Connections[i].weight;
-            else
+            if(Random.value < 0.05f)
+            {
                 babiesConnections[i].weight = parent2Connections[i].weight;
+            }        
         }
 
         baby.ResetNeurons();
         baby.OrderNetwork();
 
         return baby;
+    }
+
+    public void SaveButton()
+    {
+        population.Sort((a, b) => (CompareFitness(a.fitnessScore, b.fitnessScore)));
+        SaveBestPlayer();
+        bestPlayer = population[0].GetNetwork();
+        bestScore = population[0].fitnessScore;
+    }
+
+    public void KillAll()
+    {
+        foreach (AIPlayer player in population)
+            player.isAlive = false;
+    }
+
+    public void ResetBestFitness()
+    {
+        bestScore = 0;
+        prevBestScore = 0;
     }
 
     private int CompareFitness(float a, float b)

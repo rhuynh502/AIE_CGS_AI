@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   turnSpeed: 75
-  angleSpread: 120
