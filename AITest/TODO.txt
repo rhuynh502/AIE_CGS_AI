@@ -16,3 +16,5 @@ make it so that you can load an ai without letting it train and die.
 Make materials for ai and player - DONE
 
 make new scriptable for ai stats - DONE
+
+make it a package. learn json files and packge files for unity
