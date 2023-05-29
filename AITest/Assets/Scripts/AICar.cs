@@ -6,8 +6,6 @@ public class AICar : Car
 {
     [SerializeField] public AIStats stats;
 
-    public float velocityDirection;
-
     Vector3 respawnPos;
     Quaternion respawnRot;
     public Vector3 latestCheckpointPos;

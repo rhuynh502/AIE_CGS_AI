@@ -27,4 +27,13 @@ public class Connection
         else if (chanceToMutate < 0.07f)
             weight = Random.Range(weight - 0.03f, weight + 0.03f);
     }
+    // In this mutation, only small changes to weights will happen. No weights will have drastic
+    // changes to their values
+    public void ForceMutate()
+    {
+        float chanceToMutate = Random.value;
+
+        if (chanceToMutate < 0.07f)
+            weight = Random.Range(weight - 0.03f, weight + 0.03f);
+    }
 }

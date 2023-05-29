@@ -12,7 +12,7 @@ public class Population : MonoBehaviour
     public float bestScore;
     private float prevBestScore;
 
-    List<Network> bestOfThisGen = new List<Network>();
+    [SerializeField] private string networkName;
 
     // Start is called before the first frame update
     void Awake()
@@ -26,7 +26,7 @@ public class Population : MonoBehaviour
 
         try
         {
-            using(StreamReader reading = new StreamReader("BestPlayer.txt"))
+            using(StreamReader reading = new StreamReader(networkName))
             {
                 bestScore = float.Parse(reading.ReadLine(), System.Globalization.NumberStyles.Float);
 
@@ -58,7 +58,7 @@ public class Population : MonoBehaviour
             foreach (AIPlayer player in population)
             {
                 player.SetNetwork(bestPlayer.CloneNetwork());
-                player.Mutate();
+                player.ForceMutate();
             }
     }
 
@@ -96,6 +96,9 @@ public class Population : MonoBehaviour
 
     private void RegeneratePopulation()
     {
+        foreach (AIPlayer player in population)
+            player.CalculateFitnessScore();
+
         Parallel.For(0, population.Count, i =>
         {
             if (population[i].fitnessScore > bestScore)
@@ -136,7 +139,7 @@ public class Population : MonoBehaviour
 
     private void SaveBestPlayer()
     {
-        using(StreamWriter writeText = new StreamWriter("BestPlayer.txt"))
+        using(StreamWriter writeText = new StreamWriter(networkName))
         {
             writeText.WriteLine(bestScore);
             writeText.WriteLine(bestPlayer.GetInputsAmount());

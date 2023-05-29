@@ -169,6 +169,12 @@ public class Network
         for (int i = 0; i < connections.Count; i++)
             connections[i].Mutate();
     }
+
+    public void ForceMutate()
+    {
+        for (int i = 0; i < connections.Count; i++)
+            connections[i].ForceMutate();
+    }
     public List<Neuron> GetNeurons()
     {
         return neurons;

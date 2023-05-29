@@ -9,8 +9,6 @@ public class AIPlayer : MonoBehaviour
     public float fitnessScore;
     private Network network;
 
-    [SerializeField] private bool canLearn;
-    [SerializeField] private bool canDie;
     // These variables will be used to calculate fitness
     // These will change depending on what you need the ai to accomplish
     public bool isAlive = true;
@@ -36,11 +34,6 @@ public class AIPlayer : MonoBehaviour
     List<float> dependantVariables = new List<float>();
     // These are the outputs the network calculates
     List<float> outputVariables = new List<float>();
-
-    // need to make a class that spawns a bunch of players
-    // that class also deals with when crossbreeding occurs.
-    // something like a species or population class
-    // this class should take care of the ai's functionality
 
     private void Awake()
     {
@@ -118,7 +111,7 @@ public class AIPlayer : MonoBehaviour
         // If it is not, it can cause some errors.
         outputVariables = network.FeedForward(dependantVariables);
 
-        if (canDie && timeAlive > lifetime)
+        if (carController.stats.canLearn && timeAlive > lifetime)
             isAlive = false;
         
     }
@@ -153,9 +146,8 @@ public class AIPlayer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(canDie && collision.collider.CompareTag("Wall"))
+        if(carController.stats.canLearn && collision.collider.CompareTag("Wall"))
         {
-            CalculateFitnessScore();
             isAlive = false;
         }
 
@@ -163,8 +155,13 @@ public class AIPlayer : MonoBehaviour
 
     public void Mutate()
     {
-        if(canLearn)
+        if(carController.stats.canLearn)
             network.Mutate();
+    }
+
+    public void ForceMutate()
+    {
+        network.ForceMutate();
     }
 
     public Network GetNetwork()
