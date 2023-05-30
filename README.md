@@ -3,6 +3,22 @@
 
 ***
 
+#### Table of Contents
+- [Breakdown of Package](#breakdown-of-the-redistributable-code)
+    - [Network](#network)
+    - [Neuron](#neuron)
+    - [Connection](#connection)
+    - [Population](#population)
+    - [AIPlayer](#aiplayer)
+    - [Visual](#visual)
+- [Racing Game Example](#the-racing-game-example)
+    - [Inputs](#inputs)
+    - [Outputs](#outputs)
+    - [Activation Function](#activation-function)
+    - [Fitness Score](#fitness-score-calculation)
+
+***
+
 ## Breakdown of the redistributable source code
 
 This package includes the scripts to create a neural network that evolves through a genetic algorithm. The provided scripts will allow a user to create an evolving AI.
@@ -37,11 +53,11 @@ is already a data file for the given `networkName`, the script will load the net
 
 > The network name is the text file's name that stores the data of the network. This is set in the inspector on the population script.
 
-***Image of inspector***
+<center><img src="Images/PopulationNetworkName.jpg" width="400"></center>  
 
-If there isn't a text file with the same name, it will generate a new text file to 
-store the network in. The population script also keeps a copy of the `bestScore` of this session, the `prevBestScore` (previous best score) and the `bestPlayer` 
-of the session. If a file is read during startup, the default `bestPlayer` will be the copied network.
+If there isn't a text file with the same name, it will generate a new text file to store the network in. The population script also keeps a copy of the 
+`bestScore` of this session, the `prevBestScore` (previous best score) and the `bestPlayer` of the session. If a file is read during startup, the 
+default `bestPlayer` will be the copied network.
 
 When all AI have reached the time limit or have died, the script will calculate the AIs fitness scores and sort them according to the best fitness scores. It
 will then crossbreed this generations best player, and the saved best player and produce a new network with spliced weights. It will then repopulate the AI
@@ -80,7 +96,7 @@ way.
 
 ***
 
-***KEEP IN MIND, GENETIC ALGORITHM NEURAL NETWORKS WILL GENERATE THE SOLUTION IT THINKS IS THE BEST AND WILL NOT ALWAYS BE THE SAME AS THE SOLUTION YOU WANT***
+<font color="red">***KEEP IN MIND, GENETIC ALGORITHM NEURAL NETWORKS WILL GENERATE THE SOLUTION IT THINKS IS THE BEST AND WILL NOT ALWAYS BE THE SAME AS THE SOLUTION YOU WANT***</font>
 
 ***
 
@@ -123,7 +139,9 @@ The sigmoid function returns a value between 0 and 1. This can be used in networ
 always want a positive value even if the input is negative. This is handy if you want to emulate a player and how they use a controller.
 Just like the example fighting game, a sigmoid activation function can be used to imitate button presses for each move a character has.
 
-![Sigmoid Function](Images/SigmoidFunction.jpg "Sigmoid Function")
+<center><img src="Images/SigmoidFunction.jpg" width="450"></center>  
+
+<center><img src="Images/SigmoidFunctionFormula.jpg" width="200"></center>  
 
 The tanh function returns a value between -1 and 1. This function is good in the cases where negative values are required. In this racing
 game, the forward and turn movement is altered depending on this value. If the output for forward is positive, it will go forward. If the output
@@ -131,13 +149,21 @@ is negative, it will go backwards. If the value is large, it will move fast and 
 for turning will get an angle based off a max turn angle and rotate the car by that amount. For example, the max amount of degrees you
 can turn is 90 degrees. Depending on the output value, the turn amount will be affected.
 
-***image of tanh function***
+<center><img src="Images/TanhFunction.jpg" width="450"></center>  
+
+<center><img src="Images/TanhFunctionFormula.jpg" width="200"></center>  
 
 The linear functions will return a value changed based on the gradient of the line. Usually the linear function will have a gradient of
 one and the output value will not change. This is useful if your outputs do not need to be clamped between two values. The rectified linear
 version will set every output less than 0 to 0 and keep any value above 0 unchanged.
 
-***image of relu and linear function***
+<center><img src="Images/LinearFunction.jpg" width="450"></center>  
+
+<center><img src="Images/LinearFunctionFormula.jpg" width="150"></center>  
+
+<center><img src="Images/RectifiedLinear.jpg" width="450"></center>  
+
+<center><img src="Images/RectifiedLinearFormula.jpg" width="200"></center>  
 
 ### Fitness Score Calculation
 
