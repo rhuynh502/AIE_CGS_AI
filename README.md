@@ -1,10 +1,8 @@
 
 # Genetic Algorithm Neural Network Package
 
-***
-
-#### Table of Contents
-- [Breakdown of Package](#breakdown-of-the-redistributable-code)
+## Table of Contents
+- [Breakdown of Package](#breakdown-of-the-redistributable-source-code)
     - [Network](#network)
     - [Neuron](#neuron)
     - [Connection](#connection)
@@ -16,8 +14,6 @@
     - [Outputs](#outputs)
     - [Activation Function](#activation-function)
     - [Fitness Score](#fitness-score-calculation)
-
-***
 
 ## Breakdown of the redistributable source code
 
@@ -46,6 +42,8 @@ This can be changed in the script as this is not revealed anywhere in the Unity 
 the weights of a connection will randomly change. `mutateChance` is the chance for a weight to change according to the `rangeOfMutation`. This is a more controlled
 mutation.
 
+<center><img src="Images/ConnectionMutation.jpg" width="550"></center>  
+
 ### Population
 
 The population script will grab all objects tagged by the Robot tag. This tag can be anything as it is only used to keep track of what objects is an AI. If their
@@ -72,6 +70,8 @@ This script is where the network will reside. This script will feed forward some
 will act according to those outputs. The values that can be changed are in the `AIStats` scriptable object. The `amountOfInputs` is the amount of input nodes
 the network has. This is the same for the `amountOfOutputs` and `amountOfHiddenNodes`. These three variables affect how the network looks. Here the AIPlayer will
 do two things. It will assess and then perform.
+
+<center><img src="Images/AIStats.jpg" width="400"></center>  
 
 Assessing the situation is the process of gathering the required inputs for the network to use. It will take those values, put them into a list and pass it 
 through to the network so it can feed forward. The amount of required inputs must equal the amount of input nodes. The required values will change with each game.
@@ -123,6 +123,8 @@ the car will move according to the outputs the network generates. This is seen i
 network supplies and uses those to drive. The outputs can be manipulated however you want. This is seen in the `Drive` function where the input for
 the turn fuction is multipled by a turn speed.
 
+<center><img src="Images/CarMovement.jpg" width="600"></center>  
+
 Continuing on from the thought case, a fighting game will have outputs mapped to each of the buttons that can be inputted by a player. The outputs
 that are expected from the network will toggle the buttons based on the value. An example of this is if the output for the button *x* is 0.8. Since
 the value passes the threshold of lets say 0.65, the button will be pushed. For the button *o* the output value was 0.2 so the button is not pressed.
@@ -172,7 +174,11 @@ fitness score was a summation of the distance it has travelled between each goal
 for guiding the agent in the direction you want it to go. This is a very supervised way of learning as goal points were put on the
 track in the direction you wanted the agents to go. Different ways to affect this value without actually changing the required
 calculation is reducing the amount of time the agent can stay alive. This made the agent have to go faster to reach each checkpoint.
-This is an example of ways to get wanted behaviours from the agents.
+This is an example of ways to get wanted behaviours from the agents. Another method of making the car go faster is to consider
+average velocity in the fitness score. This could be an average velocity multiplier that would multiply the distance travelled. This
+would output a smaller fitness if the car is travelling slower or a larger fitness if the car is travelling faster.
+
+<center><img src="Images/FitnessScore.jpg" width="750"></center>  
 
 In a fighting game, the fitness score could be comprised of your health, the enemy health and time left. This could be a good way for
 the AI to evolve so that it keeps its health high, the enemy's health low, and do it as fast as possible.

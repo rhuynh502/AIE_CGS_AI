@@ -55,27 +55,23 @@ public class AIPlayer : MonoBehaviour
     public void CalculateFitnessScore()
     {
         fitnessScore += Vector3.Distance(carController.GetLatestCheckPoint(), transform.position);
-        
     }
 
     public void Think()
     {
-        
         timeAlive += Time.deltaTime;
-        // This section is needed
 
         PerformActions();
-
-        // ------------------------------
-        
     }
 
     // This is where the AI uses the inputs given by the user
     // and determines the values it will give to the network
     private void AssessSituation()
     {
+        // Reset the dependant vairables for next feed forward
         dependantVariables.Clear();
-        // This is where modularity comes in. The user should be able to
+
+        // The user should be able to
         // write up their own inputs that the ai will take in. In this case, the
         // AI needs to know where the walls are in respect to its own position. These
         // Raycasts give that distance to the player.
@@ -127,11 +123,8 @@ public class AIPlayer : MonoBehaviour
             isAlive = false;
 
         Vector3 initialPos = transform.position;
-        // This section is needed.
 
         AssessSituation();
-
-        // ---------------------------
 
         // outputs are passed to the script that drives the car.
         carController.Drive(outputVariables);

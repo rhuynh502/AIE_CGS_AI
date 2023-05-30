@@ -52,14 +52,13 @@ public class Car : MonoBehaviour
 
     public void ForwardMovement(float directionOfMotion)
     {
-        //transform.position += transform.TransformDirection(transform.forward) * moveSpeed * directionOfMotion * Time.deltaTime;
         velocityDirection = directionOfMotion;
-        rb.MovePosition(transform.position + transform.TransformDirection(transform.forward) * moveSpeed * directionOfMotion * Time.deltaTime);
+        rb.MovePosition(transform.position + transform.TransformDirection(transform.forward) 
+            * moveSpeed * directionOfMotion * Time.deltaTime);
     }
 
     public void TurnMovement(float amountOfTurn)
     {
-        //transform.Rotate(0, amountOfTurn * Time.deltaTime, 0);
         rb.MoveRotation(transform.rotation * Quaternion.Euler(0, amountOfTurn * Time.deltaTime, 0));
     }
 
