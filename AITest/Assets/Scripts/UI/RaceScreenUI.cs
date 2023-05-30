@@ -18,12 +18,13 @@ public class RaceScreenUI : MonoBehaviour
     {
         if(countdownText.isActiveAndEnabled)
         {
-            countdownText.text = countDown.ToString();
+            countdownText.text = ((int)countDown).ToString();
             countDown -= Time.unscaledDeltaTime;
         }
     }
     public void StartRace()
     {
+        countDown = 3;
         StartCoroutine(StartRace_CR());
     }
 

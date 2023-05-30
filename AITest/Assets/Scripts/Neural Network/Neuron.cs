@@ -54,7 +54,7 @@ public class Neuron
 
     private float Linear(float inputValue)
     {
-        return Mathf.Clamp(inputValue, -1, 1);
+        return inputValue;
     }
 
     private float ParametricRectifiedLinear(float inputValue)
@@ -91,7 +91,6 @@ public class Neuron
         {
             float tempWeight = connections[i].weight;
             connections[i].weight += 0.9f * gradientDescent * connections[i].fromNeuron.outputValue;
-            //Debug.Log($"{tempWeight} || {connections[i].weight}");
         }
     }
 

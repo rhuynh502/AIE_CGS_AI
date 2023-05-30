@@ -20,5 +20,7 @@ MonoBehaviour:
   layersToScan:
     serializedVersion: 2
     m_Bits: 128
-  lifetime: 6.5
+  lifetime: 5.5
   canLearn: 1
+  timeAdd: 4
+  timeRemove: 8

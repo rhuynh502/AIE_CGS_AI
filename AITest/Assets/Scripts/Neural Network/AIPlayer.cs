@@ -62,7 +62,11 @@ public class AIPlayer : MonoBehaviour
     {
         
         timeAlive += Time.deltaTime;
+        // This section is needed
+
         PerformActions();
+
+        // ------------------------------
         
     }
 
@@ -123,8 +127,13 @@ public class AIPlayer : MonoBehaviour
             isAlive = false;
 
         Vector3 initialPos = transform.position;
+        // This section is needed.
+
         AssessSituation();
 
+        // ---------------------------
+
+        // outputs are passed to the script that drives the car.
         carController.Drive(outputVariables);
     }
 
@@ -196,12 +205,12 @@ public class AIPlayer : MonoBehaviour
 
     public void AddTime()
     {
-        timeAlive -= 7;
+        timeAlive -= carController.stats.timeAdd;
     }
 
     public void SubtractTime()
     {
-        timeAlive += 8;
+        timeAlive += carController.stats.timeRemove;
     }
 
     public AICar GetCar()

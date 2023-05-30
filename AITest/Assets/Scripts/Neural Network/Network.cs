@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 // The network should handle all the connections between nodes
@@ -18,7 +17,8 @@ public class Network
     private List<Connection> connections = new List<Connection>();
     int currNeuron = 0;
     int biasNeuronLocation;
-    // A basic network starts with 2 layers. This can increase
+    // A basic network starts with 3 layers. This can increase but for now, since this is
+    // a single perceptron network, only 3 layers will exist.
     int layers = 3;
 
     private List<Neuron> orderedNetwork = new List<Neuron>();

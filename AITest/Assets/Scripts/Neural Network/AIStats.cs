@@ -13,4 +13,6 @@ public class AIStats : ScriptableObject
     public LayerMask layersToScan;
     public float lifetime;
     public bool canLearn;
+    public float timeAdd;
+    public float timeRemove;
 }

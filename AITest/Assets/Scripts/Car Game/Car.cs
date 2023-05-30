@@ -12,7 +12,7 @@ public class Car : MonoBehaviour
 
     private int moveSpeed;
     private float turnSpeed;
-    private float speedModifier = 0.97f;
+    private float speedModifier = 1;
 
     public float velocityDirection;
 
@@ -47,7 +47,7 @@ public class Car : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
             speedModifier = 0.5f;
         else
-            speedModifier = 0.97f;
+            speedModifier = 1;
     }
 
     public void ForwardMovement(float directionOfMotion)

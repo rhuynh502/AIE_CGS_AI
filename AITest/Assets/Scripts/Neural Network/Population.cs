@@ -1,4 +1,3 @@
-using OpenCover.Framework.Model;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +6,7 @@ using UnityEngine;
 
 public class Population : MonoBehaviour
 {
-    [SerializeField] private List<AIPlayer> population;
+    private List<AIPlayer> population;
     private Network bestPlayer;
     public float bestScore;
     private float prevBestScore;
@@ -17,6 +16,8 @@ public class Population : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        // Grab all objects that have the Robot tag. This tag can be anything as long
+        // as these objects have the AI attached to them
         GameObject[] robotGameObjects = GameObject.FindGameObjectsWithTag("Robot");
 
         foreach (GameObject robot in robotGameObjects)
@@ -24,9 +25,11 @@ public class Population : MonoBehaviour
             population.Add(robot.GetComponent<AIPlayer>());
         }
 
+        // Get the saved network and copy it to the best player of the session.
+        // If no network is loaded, a new one is created.
         try
         {
-            using(StreamReader reading = new StreamReader(networkName))
+            using(StreamReader reading = new StreamReader(Application.streamingAssetsPath + $"/{networkName}"))
             {
                 bestScore = float.Parse(reading.ReadLine(), System.Globalization.NumberStyles.Float);
 
@@ -54,6 +57,8 @@ public class Population : MonoBehaviour
 
     private void Start()
     {
+        // Initialise all AIs with clones of the best player. Cloning is important
+        // so they all are individual. If not cloned, they would be using the same network
         if(bestPlayer != null)
             foreach (AIPlayer player in population)
             {
@@ -139,7 +144,7 @@ public class Population : MonoBehaviour
 
     private void SaveBestPlayer()
     {
-        using(StreamWriter writeText = new StreamWriter(networkName))
+        using(StreamWriter writeText = new StreamWriter(Application.streamingAssetsPath + $"/{networkName}"))
         {
             writeText.WriteLine(bestScore);
             writeText.WriteLine(bestPlayer.GetInputsAmount());
