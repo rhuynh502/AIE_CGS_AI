@@ -33,8 +33,13 @@ mutation.
 ### Population
 
 The population script will grab all objects tagged by the Robot tag. This tag can be anything as it is only used to keep track of what objects is an AI. If their
-is already a data file for the given `networkName` (The network name is the text file's name that stores the data of the network. This is set in the inspector.),
-the script will load the network and apply it to the current training session. If there isn't a text file with the same name, it will generate a new text file to 
+is already a data file for the given `networkName`, the script will load the network and apply it to the current training session. 
+
+> The network name is the text file's name that stores the data of the network. This is set in the inspector on the population script.
+
+***Image of inspector***
+
+If there isn't a text file with the same name, it will generate a new text file to 
 store the network in. The population script also keeps a copy of the `bestScore` of this session, the `prevBestScore` (previous best score) and the `bestPlayer` 
 of the session. If a file is read during startup, the default `bestPlayer` will be the copied network.
 
@@ -118,19 +123,33 @@ The sigmoid function returns a value between 0 and 1. This can be used in networ
 always want a positive value even if the input is negative. This is handy if you want to emulate a player and how they use a controller.
 Just like the example fighting game, a sigmoid activation function can be used to imitate button presses for each move a character has.
 
+![Sigmoid Function](Images/SigmoidFunction.jpg "Sigmoid Function")
+
 The tanh function returns a value between -1 and 1. This function is good in the cases where negative values are required. In this racing
 game, the forward and turn movement is altered depending on this value. If the output for forward is positive, it will go forward. If the output
 is negative, it will go backwards. If the value is large, it will move fast and if the value is small it will move slowly. The output
 for turning will get an angle based off a max turn angle and rotate the car by that amount. For example, the max amount of degrees you
 can turn is 90 degrees. Depending on the output value, the turn amount will be affected.
 
+***image of tanh function***
+
 The linear functions will return a value changed based on the gradient of the line. Usually the linear function will have a gradient of
 one and the output value will not change. This is useful if your outputs do not need to be clamped between two values. The rectified linear
 version will set every output less than 0 to 0 and keep any value above 0 unchanged.
+
+***image of relu and linear function***
 
 ### Fitness Score Calculation
 
 The fitness score is how you rank the performance of your AI agents. This will change depending on each game. In the racing game, the 
 fitness score was a summation of the distance it has travelled between each goal. This way of calulating the fitness score is useful
 for guiding the agent in the direction you want it to go. This is a very supervised way of learning as goal points were put on the
-track in the direction you wanted the agents to go.
+track in the direction you wanted the agents to go. Different ways to affect this value without actually changing the required
+calculation is reducing the amount of time the agent can stay alive. This made the agent have to go faster to reach each checkpoint.
+This is an example of ways to get wanted behaviours from the agents.
+
+In a fighting game, the fitness score could be comprised of your health, the enemy health and time left. This could be a good way for
+the AI to evolve so that it keeps its health high, the enemy's health low, and do it as fast as possible.
+
+Fitness scores will ultimately affect how the weights of the connections change according to the importance of each factor when
+calculating the fitness score. 
