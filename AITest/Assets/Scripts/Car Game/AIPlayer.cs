@@ -8,9 +8,6 @@ public class AIPlayer : AIPlayerTemplate
 {
     // These variables will be used to calculate fitness
     // These will change depending on what you need the ai to accomplish
-    public bool isAlive = true;
-    private float timeAlive;
-    private float lifetime;
 
     private AICar carController;
     private float angleInDegrees;

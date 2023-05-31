@@ -6,12 +6,20 @@ using UnityEngine;
 
 public class Population : MonoBehaviour
 {
-    private List<AIPlayer> population = new List<AIPlayer>();
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    //  REPLACE ALL AIPLAYERTEMPLATE WITH THE INHERITED VERSION THAT YOU CREATE                          //
+    //  THEY ARE JUST TEMPLATES AND HAVE NO FUNCTIONALITY. THEY ARE THERE AS A GUIDELINE                 //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private List<AIPlayerTemplate> population = new List<AIPlayerTemplate>();
     private Network bestPlayer;
     public float bestScore;
     private float prevBestScore;
 
     [SerializeField] private string networkName;
+
+    // set default startup position of agent/s
+    [SerializeField] private Vector3 startingPos;
 
     // Start is called before the first frame update
     void Awake()
@@ -22,7 +30,7 @@ public class Population : MonoBehaviour
 
         foreach (GameObject robot in robotGameObjects)
         {
-            population.Add(robot.GetComponent<AIPlayer>());
+            population.Add(robot.GetComponent<AIPlayerTemplate>());
         }
 
         // Get the saved network and copy it to the best player of the session.
@@ -60,7 +68,7 @@ public class Population : MonoBehaviour
         // Initialise all AIs with clones of the best player. Cloning is important
         // so they all are individual. If not cloned, they would be using the same network
         if(bestPlayer != null)
-            foreach (AIPlayer player in population)
+            foreach (AIPlayerTemplate player in population)
             {
                 player.SetNetwork(bestPlayer.CloneNetwork());
                 player.ForceMutate();
@@ -101,7 +109,7 @@ public class Population : MonoBehaviour
 
     private void RegeneratePopulation()
     {
-        foreach (AIPlayer player in population)
+        foreach (AIPlayerTemplate player in population)
             player.CalculateFitnessScore();
 
         Parallel.For(0, population.Count, i =>
@@ -126,13 +134,14 @@ public class Population : MonoBehaviour
         for (int i = 0; i < population.Count; i++)
         {
             if (i < population.Count / 2)
-                population[i].SetNetwork(bestPlayer.CloneNetwork());
-            else
                 population[i].SetNetwork(baby.CloneNetwork());
+            else
+                population[i].SetNetwork(bestPlayer.CloneNetwork());
 
             if (i != 0)
                 population[i].Mutate();
-            population[i].Respawn();
+            ResetPlayers(population[i]);
+            // More functionality can be added here to reset the AIs after death.
         }
     }
 
@@ -167,15 +176,15 @@ public class Population : MonoBehaviour
 
         List<Connection> parent2Connections = _parent2.GetConnections();
 
-        for(int i = 0; i < babiesConnections.Count; i++)
+        for(int i = baby.GetInputsAmount() + 1; i < babiesConnections.Count; i++)
         {
-            if(Random.value < 0.05f)
+            if(Random.value < 0.1f)
             {
                 babiesConnections[i].weight = parent2Connections[i].weight;
+                
             }        
         }
 
-        baby.ResetNeurons();
         baby.OrderNetwork();
 
         return baby;
@@ -191,7 +200,7 @@ public class Population : MonoBehaviour
 
     public void KillAll()
     {
-        foreach (AIPlayer player in population)
+        foreach (AIPlayerTemplate player in population)
             player.isAlive = false;
     }
 
@@ -199,6 +208,15 @@ public class Population : MonoBehaviour
     {
         bestScore = 0;
         prevBestScore = 0;
+    }
+
+    public void ResetPlayers(AIPlayerTemplate player)
+    {
+        player.GetNetwork().ResetNeurons();
+        player.fitnessScore = 0;
+        player.isAlive = true;
+        player.timeAlive = 0;
+        player.transform.position = startingPos;
     }
 
     private int CompareFitness(float a, float b)

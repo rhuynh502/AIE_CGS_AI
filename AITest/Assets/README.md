@@ -1,8 +1,6 @@
 
 # Genetic Algorithm Neural Network Package
 
-[To read this file use Visual Studio Code and open it as a preview]: #
-
 ## Table of Contents
 - [Breakdown of Package](#breakdown-of-the-redistributable-source-code)
     - [Network](#network)
@@ -69,11 +67,6 @@ There are some buttons that allow for more supervised learning. The user can kil
 the best fitness score can lead to some unwanted learning but can also get the AI to break out from a repetition. A good use for resetting the best fitness score 
 is when the AI is repeating an action that will never exceed the fitness score. The weights of the network will still be the same but the threshold to 
 crossbreed with other AI will happen.
-
-When using this script, make sure to replace all the `AIPlayerTemplate`s with the AIPlayer you have created. The template has no functionality and the
-evolution of the AI will not occur as intended.
-
-<center><img src="Images/Warning.jpg" width="750"></center>  
 
 ### AIPlayer Template
 

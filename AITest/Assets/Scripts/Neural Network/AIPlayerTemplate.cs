@@ -9,6 +9,10 @@ public abstract class AIPlayerTemplate : MonoBehaviour
     public float fitnessScore;
     private Network network;
 
+    public bool isAlive = true;
+    public float timeAlive;
+    public float lifetime;
+
     // Input amount is the amount of inputs of data the network
     // needs to make decisions
     public int inputAmount;

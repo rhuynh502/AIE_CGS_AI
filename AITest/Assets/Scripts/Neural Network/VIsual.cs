@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class VIsual : MonoBehaviour
 {
-    [SerializeField] private AIPlayer player;
+    [SerializeField] private AIPlayerTemplate player;
     private Network networkToDisplay;
     private List<Neuron> neuronList;
     private List<Connection> connections;
