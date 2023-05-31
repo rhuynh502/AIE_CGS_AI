@@ -103,6 +103,7 @@ public class Network
             neurons[i].outputValue = inputsFromPlayer[i];
         }
         
+        // Set bias neuron to required output
         neurons[biasNeuronLocation].outputValue = -1;
 
         for (int i = 0; i < orderedNetwork.Count; i++)
@@ -145,11 +146,10 @@ public class Network
 
     // Currently the order of nodes in the network start from 0 -> 1 -> random amount of layers
     // for the network to go through the correct nodes from start to finish. This will sort the network
-    // for the feedforward process where it starts from 0 and couns up per layer.
+    // for the feedforward process where it starts from 0 and counts up per layer.
     public void OrderNetwork()
     {
         ConnectNetwork();
-        orderedNetwork = new List<Neuron>();
 
         for(int i = 0; i < layers; i++)
         {

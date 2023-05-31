@@ -7,19 +7,21 @@
     - [Neuron](#neuron)
     - [Connection](#connection)
     - [Population](#population)
-    - [AIPlayer](#aiplayer)
+    - [AIPlayer Template](#aiplayer-template)
     - [Visual](#visual)
 - [Racing Game Example](#the-racing-game-example)
     - [Inputs](#inputs)
     - [Outputs](#outputs)
     - [Activation Function](#activation-function)
     - [Fitness Score](#fitness-score-calculation)
+- [Conclusion](#conclusion)
 
 ## Breakdown of the redistributable source code
 
 This package includes the scripts to create a neural network that evolves through a genetic algorithm. The provided scripts will allow a user to create an evolving AI.
 In the scripts folder you will find six scripts. The neural network consists of the Network, Connection and Neuron scripts. These hold the core structures of the system
-and will generate the network. The population script takes care of all the AI. This includes their updates, fitness levels and crossbreeding.
+and will generate the network. The population script takes care of all the AI. This includes their updates, fitness levels and crossbreeding. You can download the
+entire project to include the racing game example or you can download the package that will only include these 6 scripts.
 
 ### Network
 
@@ -62,12 +64,14 @@ will then crossbreed this generations best player, and the saved best player and
 with some of the best players, and some of the breeded product.
 
 There are some buttons that allow for more supervised learning. The user can kill all current AI, save the best AI or reset the best fitness score. Resetting
-the best fitness score can lead to some unwanted learning but can also get the AI to break out from a repetition.
+the best fitness score can lead to some unwanted learning but can also get the AI to break out from a repetition. A good use for resetting the best fitness score 
+is when the AI is repeating an action that will never exceed the fitness score. The weights of the network will still be the same but the threshold to 
+crossbreed with other AI will happen.
 
-### AIPlayer
+### AIPlayer Template
 
 This script is where the network will reside. This script will feed forward some inputs to the network and take the output and pass it to another script that
-will act according to those outputs. The values that can be changed are in the `AIStats` scriptable object. The `amountOfInputs` is the amount of input nodes
+will act according to those outputs. The `amountOfInputs` is the amount of input nodes
 the network has. This is the same for the `amountOfOutputs` and `amountOfHiddenNodes`. These three variables affect how the network looks. Here the AIPlayer will
 do two things. It will assess and then perform.
 
@@ -79,7 +83,9 @@ through to the network so it can feed forward. The amount of required inputs mus
 Performing actions is when the network passes the output it gets from the feed forward process and sends it to the required script. That script then uses
 those values to determine what actions need to be made.
 
-This script is where the user must create their own inputs and outputs based on the requirements.
+The user must create a script that inherits from the `AIPlayerTemplate`to create functionality. The inputs, outputs and hidden layer nodes must be set in an `Awake`.
+In the racing game example explained in the [Racing Game Example](#the-racing-game-example), a scriptable object makes it easier for users to change their 
+network and how it looks. The network is then created after this process.
 
 ### Visual
 
@@ -96,23 +102,26 @@ way.
 
 ***
 
-<font color="red">***KEEP IN MIND, GENETIC ALGORITHM NEURAL NETWORKS WILL GENERATE THE SOLUTION IT THINKS IS THE BEST AND WILL NOT ALWAYS BE THE SAME AS THE SOLUTION YOU WANT***</font>
+> <font color="red">***KEEP IN MIND, GENETIC ALGORITHM NEURAL NETWORKS WILL GENERATE THE SOLUTION IT THINKS IS THE BEST AND WILL NOT ALWAYS BE THE SAME AS THE SOLUTION YOU WANT***</font>
 
 ***
 
 ### Inputs
 
 Inputs are what the network uses to come to a conclusion on what to do in a situation. These are passed into the network and fed forward to come to some
-number of outputs. The inputs must be quantifiable (stored in a float) and exist in a range between 0 and 1. In the racing game example, the inputs that
+number of outputs. The inputs must be quantifiable (stored in a float). In the racing game example, the inputs that
 the car takes are distances to walls from its position. This is calculated using raycasts. The amount of inputs is the same as the amount of raycasts
-shot from the car. These distances are then divided by the largest distance to fit a value between 0 and 1. What this means is if the distance is far
+shot from the car. These distances are then divided by the largest distance. What this means is if the distance is far
 away, the value will be higher and if the distance is close, the value is smaller. This is all in a ratio of the largest distance to keep consistency. 
 This is what the car uses to make decisions.
 
+<center><img src="Images/Inputs.jpg" width="450"></center>
+
 In another thought case, in a fighting game, the network would need to know the position of the enemy, velocity, inputs, enemy health, own health and
 many more. The positions x and y can be fed through, the velocity can also be broken down into x and y. The enemies inputs can be 0 or 1 depending on
-whether it is pressed or not. The health values can be passed through as decimals based on max health. These are only a few of the inputs a fighting
-game could use to train a network.
+whether a button is pressed or not. The health values can be passed through as decimals based on max health. These are only a few of the inputs a fighting
+game could use to train a network. The inputs do not have to come from the same place and they should always be dependant on what the user wants the AI 
+to consider when making a decision.
 
 ### Outputs
 
@@ -185,3 +194,21 @@ the AI to evolve so that it keeps its health high, the enemy's health low, and d
 
 Fitness scores will ultimately affect how the weights of the connections change according to the importance of each factor when
 calculating the fitness score. 
+
+***
+
+## Conclusion
+
+This package is designed for other programmers to play around with a neural network and have full customisation when it comes
+to its uses. It will allow users to teach simple or complex AI what they are meant to do rather than write out scripts for their functionality.
+Hopefully after reading the breakdown of the package and what the user must create, you are able to build a network for
+yourself.
+
+### Future Goals
+
+- Convert this system to be a multilayered perceptron rather than single layer.
+    > Uses more than one hidden layer.
+
+- Create another game that uses this system or another driving system and teach an AI based on that.
+    > Shows that this can be used in other cases.
+

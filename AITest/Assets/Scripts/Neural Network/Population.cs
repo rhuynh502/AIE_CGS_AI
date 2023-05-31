@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Population : MonoBehaviour
 {
-    private List<AIPlayer> population;
+    private List<AIPlayer> population = new List<AIPlayer>();
     private Network bestPlayer;
     public float bestScore;
     private float prevBestScore;
